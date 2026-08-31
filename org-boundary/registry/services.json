@@ -3,6 +3,13 @@
   "organization": "master-records",
   "services": [
     {
+      "service_id": "master-records.boundary-diagnostic",
+      "repository": "master-records/.github",
+      "boundary_role": "BOUNDARY_LOCAL_DIAGNOSTIC",
+      "profile_status": "ACTIVE",
+      "runtime_required_for_consumption": false
+    },
+    {
       "service_id": "master-records.orchestration",
       "repository": "master-records/orchestration",
       "boundary_role": "INTERNAL_ENDPOINT",
