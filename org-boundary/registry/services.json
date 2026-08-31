@@ -3,6 +3,18 @@
   "organization": "master-records",
   "services": [
     {
+      "service_id": "master-records.org-control",
+      "repository": "master-records/.github",
+      "boundary_role": "BOUNDARY_LOCAL_CONTROL",
+      "profile_status": "ACTIVE",
+      "accepts": [
+        "ecosystem.communication",
+        "ecosystem.monitor.request",
+        "ecosystem.work.request"
+      ],
+      "runtime_required_for_consumption": false
+    },
+    {
       "service_id": "master-records.boundary-diagnostic",
       "repository": "master-records/.github",
       "boundary_role": "BOUNDARY_LOCAL_DIAGNOSTIC",
