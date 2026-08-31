@@ -35,3 +35,19 @@ Source presence, CI success, merge, deployment, activation, ingress receipt, dis
 
 ## Next
 Replace generic INTERNAL_ENDPOINT entries with tighter endpoint-specific profiles as each repository's own handoff and runtime contract are reconciled.
+
+
+## Machine-execution update — 2026-08-31
+- org-boundary/runtime/process_boundary.py: INSTALLED
+- org-boundary/tests/test_process_boundary.py: INSTALLED
+- .github/workflows/org-boundary-execution.yml: INSTALLED
+- boundary-local diagnostic service: ACTIVE
+- real application endpoints: FAIL-CLOSED pending endpoint-profile reconciliation
+- reciprocal Triad-Test <-> master-records diagnostic packet execution: LOCAL_DETERMINISTIC_PASS
+- receipt sequence observed locally: INGRESS_ACCEPTED -> DISPATCHED -> CONSUMED -> RESULT_BOUND -> EGRESS_EMITTED
+- same-execution reconstruction: RECONSTRUCTED in local deterministic execution
+- transition authority effect: NONE
+- hosted GitHub workflow execution: NOT OBSERVED for pilot fixture commits
+- runtime activation claim: NOT MADE
+
+The local execution proves the installed processor can actually consume the governed diagnostic packet and emit the full receipt chain. It does not prove resident sovereign deployment, hosted execution, or application-endpoint consumption.
