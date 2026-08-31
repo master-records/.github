@@ -1,0 +1,30 @@
+name: Org Boundary Execution
+on:
+  push:
+    paths:
+      - 'org-boundary/**'
+      - '.github/workflows/org-boundary-execution.yml'
+  workflow_dispatch:
+
+jobs:
+  execute:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run boundary tests
+        run: python3 org-boundary/tests/test_process_boundary.py
+      - name: Execute fixture when present
+        shell: bash
+        run: |
+          mkdir -p org-boundary/evidence/runtime
+          if [ -f org-boundary/fixtures/cross-org-ingress.json ]; then
+            python3 org-boundary/runtime/process_boundary.py \
+              --envelope org-boundary/fixtures/cross-org-ingress.json \
+              --out org-boundary/evidence/runtime/cross-org-execution.json
+          fi
+      - name: Retain execution evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: org-boundary-execution
+          path: org-boundary/evidence/runtime/
+          if-no-files-found: ignore
