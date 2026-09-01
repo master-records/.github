@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import argparse, hashlib, json
+import argparse, hashlib, json, subprocess
 from pathlib import Path
 
 KINDS=["INGRESS_ACCEPTED","DISPATCHED","CONSUMED","RESULT_BOUND","EGRESS_EMITTED"]
@@ -26,8 +26,21 @@ def main():
     if env["destination"]["org"]!=reg["organization"]: raise SystemExit("wrong-destination-org")
     svc=next((s for s in reg["services"] if s["service_id"]==env["destination"]["service"]),None)
     if not svc: raise SystemExit("unknown-service")
-    if svc["boundary_role"]!="BOUNDARY_LOCAL_DIAGNOSTIC": raise SystemExit("endpoint-adapter-not-installed")
+    role=svc.get("boundary_role")
     if env["transition"]["authority_effect"] not in ["NONE","ADMIT","DENY","DEFER","CONDITIONAL"]: raise SystemExit("bad-authority-effect")
+    if role=="BOUNDARY_LOCAL_DIAGNOSTIC":
+        application_result={"echo":env["payload"]}
+    elif role=="INTERNAL_ENDPOINT":
+        adapter=svc.get("endpoint_adapter")
+        if not adapter: raise SystemExit("endpoint-adapter-not-installed")
+        adapter_path=Path(adapter)
+        if not adapter_path.is_file(): raise SystemExit("endpoint-adapter-missing")
+        adapter_out=Path(args.out).with_suffix(".adapter.json")
+        completed=subprocess.run(["python3",str(adapter_path),"--ingress",str(Path(args.envelope)),"--out",str(adapter_out)],capture_output=True,text=True,check=False)
+        if not adapter_out.is_file(): raise SystemExit("endpoint-adapter-output-missing:"+completed.stderr[-256:])
+        application_result=load(adapter_out)
+    else:
+        raise SystemExit("endpoint-adapter-not-installed")
     base={"packet_id":env["packet_id"],"service_id":svc["service_id"],"payload_hash":hashlib.sha256(canon(env["payload"])).hexdigest()}
     receipts=[]; prev=None
     for kind in KINDS:
@@ -40,8 +53,8 @@ def main():
       "packet_id":env["packet_id"],
       "organization":reg["organization"],
       "service_id":svc["service_id"],
-      "consumed":True,
-      "application_result":{"echo":env["payload"]},
+      "consumed":application_result.get("state")!="BLOCKED",
+      "application_result":application_result,
       "authority_effect":env["transition"]["authority_effect"],
       "receipts":receipts,
       "reconstruction":{"same_execution_required":True,"status":"RECONSTRUCTED","terminal_receipt_id":prev}
