@@ -29,6 +29,17 @@
       "runtime_required_for_consumption": true
     },
     {
+      "service_id": "master-records.ecosystem-transition-ledger",
+      "repository": "master-records/orchestration",
+      "boundary_role": "INTERNAL_ENDPOINT",
+      "profile_status": "ACTIVE",
+      "accepts": [
+        "CUSTODY_ORGANIZATION_TRANSITION"
+      ],
+      "endpoint_adapter": "resident-runtime/ecosystem_transition_intake.py",
+      "runtime_required_for_consumption": true
+    },
+    {
       "service_id": "master-records.monitoring",
       "repository": "master-records/monitoring",
       "boundary_role": "INTERNAL_ENDPOINT",
