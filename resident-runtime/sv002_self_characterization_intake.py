@@ -82,6 +82,16 @@ def materialize_artifacts(request:dict[str,Any])->tuple[Path,str,str]:
     artifact_set_sha256=sha256_bytes(canon(meta))
     if artifact_set_sha256!=request.get("artifact_set_sha256"):
         raise RuntimeError("artifact_set_sha256 mismatch")
+    try:
+        s0=json.loads(decoded["S0.json"])
+        execution=json.loads(decoded["EXPERIMENT_EXECUTION_RECEIPT.json"])
+        org_root=json.loads(decoded["ORGANIZATION_LEDGER_ROOT.json"])
+    except Exception as exc:
+        raise RuntimeError("canonical JSON artifact parse failed") from exc
+    if s0.get("run_id")!=run_id or execution.get("run_id")!=run_id:
+        raise RuntimeError("run_id artifact binding mismatch")
+    if org_root.get("root_hash")!=request.get("organization_ledger_root_hash"):
+        raise RuntimeError("organization ledger root handoff binding mismatch")
     root=custody_base()/run_id/"artifact-root"
     root.mkdir(parents=True,exist_ok=True)
     for name,raw in decoded.items():
