@@ -10,12 +10,20 @@ mod=importlib.util.module_from_spec(SPEC);SPEC.loader.exec_module(mod)
 class TestSV002MasterRecordsIntake(unittest.TestCase):
     def request(self,run_id):
         rows=[]; meta=[]
+        org_hash="a"*64
         for name in mod.REQUIRED:
-            raw=(name+"\n").encode()
+            if name=="S0.json":
+                raw=json.dumps({"experiment_id":mod.EXPERIMENT_ID,"run_id":run_id}).encode()
+            elif name=="EXPERIMENT_EXECUTION_RECEIPT.json":
+                raw=json.dumps({"experiment_id":mod.EXPERIMENT_ID,"run_id":run_id}).encode()
+            elif name=="ORGANIZATION_LEDGER_ROOT.json":
+                raw=json.dumps({"root_hash":org_hash}).encode()
+            else:
+                raw=(name+"\n").encode()
             rows.append({"name":name,"sha256":hashlib.sha256(raw).hexdigest(),"size":len(raw),"base64":base64.b64encode(raw).decode()})
             meta.append({"name":name,"sha256":hashlib.sha256(raw).hexdigest(),"size":len(raw)})
         artifact_set=hashlib.sha256(mod.canon(meta)).hexdigest()
-        return {"experiment_id":mod.EXPERIMENT_ID,"run_id":run_id,"artifact_set_sha256":artifact_set,"organization_ledger_root_hash":"a"*64,"artifacts":rows}
+        return {"experiment_id":mod.EXPERIMENT_ID,"run_id":run_id,"artifact_set_sha256":artifact_set,"organization_ledger_root_hash":org_hash,"artifacts":rows}
     def test_materializes_exact_bundle_to_master_records_custody(self):
         with tempfile.TemporaryDirectory() as td:
             prior=os.environ.get("STEGVERSE_MASTER_RECORDS_SV002_CUSTODY_ROOT")
