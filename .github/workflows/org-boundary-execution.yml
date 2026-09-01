@@ -3,6 +3,14 @@ on:
   push:
     paths:
       - 'org-boundary/**'
+      - 'resident-runtime/sv002_self_characterization_intake.py'
+      - 'tests/test_sv002_self_characterization_intake.py'
+      - '.github/workflows/org-boundary-execution.yml'
+  pull_request:
+    paths:
+      - 'org-boundary/**'
+      - 'resident-runtime/sv002_self_characterization_intake.py'
+      - 'tests/test_sv002_self_characterization_intake.py'
       - '.github/workflows/org-boundary-execution.yml'
   workflow_dispatch:
 
