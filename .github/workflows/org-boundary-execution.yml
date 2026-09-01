@@ -3,6 +3,14 @@ on:
   push:
     paths:
       - 'org-boundary/**'
+      - 'resident-runtime/sv002_self_characterization_intake.py'
+      - 'tests/test_sv002_self_characterization_intake.py'
+      - '.github/workflows/org-boundary-execution.yml'
+  pull_request:
+    paths:
+      - 'org-boundary/**'
+      - 'resident-runtime/sv002_self_characterization_intake.py'
+      - 'tests/test_sv002_self_characterization_intake.py'
       - '.github/workflows/org-boundary-execution.yml'
   workflow_dispatch:
 
@@ -12,7 +20,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run boundary tests
-        run: python3 org-boundary/tests/test_process_boundary.py
+        run: |
+          python3 org-boundary/tests/test_process_boundary.py
+          python3 -m unittest -v tests.test_sv002_self_characterization_intake
       - name: Execute fixture when present
         shell: bash
         run: |

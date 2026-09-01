@@ -59,6 +59,17 @@
       "boundary_role": "INTERNAL_ENDPOINT",
       "profile_status": "NEEDS_REPOSITORY_HANDOFF_RECONCILIATION",
       "runtime_required_for_consumption": true
+    },
+    {
+      "service_id": "master-records.sv002-self-characterization-reconstruction",
+      "repository": "master-records/orchestration",
+      "boundary_role": "INTERNAL_ENDPOINT",
+      "profile_status": "ACTIVE",
+      "accepts": [
+        "CUSTODY_SV002_SELF_CHARACTERIZATION"
+      ],
+      "endpoint_adapter": "resident-runtime/sv002_self_characterization_intake.py",
+      "runtime_required_for_consumption": true
     }
   ],
   "boundary_rule": "Cross-organization ingress/egress semantics are defined by the organization boundary; endpoint authority remains transition-governed."
