@@ -144,6 +144,21 @@ def run(ingress:Path)->dict[str,Any]:
     if request.get("authority_transfer") is not False: raise RuntimeError("authority transfer prohibited")
     root,artifact_set_sha256,run_id=materialize_artifacts(request)
     reconstruction=reconstruct(root)
+    current={
+        "schema":"master-records.sv002-self-characterization-current/v1",
+        "experiment_id":EXPERIMENT_ID,
+        "run_id":run_id,
+        "artifact_set_sha256":artifact_set_sha256,
+        "reconstruction_receipt_path":str(root/"STEGVERSE_002_SELF_CHARACTERIZATION_RECONSTRUCTION_RECEIPT.json"),
+        "reconstruction_receipt_sha256":reconstruction.get("receipt_sha256"),
+        "state":"CUSTODY_RECONSTRUCTION_PASS",
+        "authority_effect":"NONE_PROJECTION_POINTER",
+    }
+    current_path=custody_base()/"CURRENT.json"
+    current_text=json.dumps(current,indent=2,sort_keys=True)+"\n"
+    if current_path.exists() and current_path.read_text(encoding="utf-8")!=current_text:
+        raise RuntimeError("SV002 custody CURRENT pointer write-once collision")
+    if not current_path.exists(): current_path.write_text(current_text,encoding="utf-8")
     return {
         "schema":"master-records.sv002-self-characterization-custody-intake/v1",
         "state":"RECORDED_AND_RECONSTRUCTED",
