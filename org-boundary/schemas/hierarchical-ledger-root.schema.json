@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://master-records.stegverse.org/schemas/hierarchical-ledger-root.schema.json",
+  "title": "StegVerse Hierarchical Ledger Root",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "scope_type",
+    "scope_id",
+    "root_id",
+    "generated_at",
+    "range",
+    "root_hash",
+    "reconstruction"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "stegverse.hierarchical-ledger-root/v1"
+    },
+    "scope_type": {
+      "enum": ["repository", "organization", "ecosystem"]
+    },
+    "scope_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "root_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "run_id": {
+      "type": ["string", "null"]
+    },
+    "previous_root_hash": {
+      "type": ["string", "null"]
+    },
+    "range": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "first_receipt_id",
+        "last_receipt_id",
+        "receipt_count",
+        "ordered_root_hash"
+      ],
+      "properties": {
+        "first_receipt_id": {"type": "string", "minLength": 1},
+        "last_receipt_id": {"type": "string", "minLength": 1},
+        "receipt_count": {"type": "integer", "minimum": 1},
+        "ordered_root_hash": {"type": "string", "minLength": 1}
+      }
+    },
+    "children": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "scope_type",
+          "scope_id",
+          "root_id",
+          "root_hash",
+          "range"
+        ],
+        "properties": {
+          "scope_type": {
+            "enum": ["repository", "organization"]
+          },
+          "scope_id": {"type": "string", "minLength": 1},
+          "root_id": {"type": "string", "minLength": 1},
+          "root_hash": {"type": "string", "minLength": 1},
+          "range": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "first_receipt_id",
+              "last_receipt_id",
+              "receipt_count",
+              "ordered_root_hash"
+            ],
+            "properties": {
+              "first_receipt_id": {"type": "string", "minLength": 1},
+              "last_receipt_id": {"type": "string", "minLength": 1},
+              "receipt_count": {"type": "integer", "minimum": 1},
+              "ordered_root_hash": {"type": "string", "minLength": 1}
+            }
+          }
+        }
+      }
+    },
+    "root_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reconstruction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "descendant_resolution_required"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT_ATTEMPTED",
+            "PARTIAL",
+            "RECONSTRUCTED",
+            "FAILED"
+          ]
+        },
+        "descendant_resolution_required": {
+          "type": "boolean"
+        },
+        "reference": {
+          "type": ["string", "null"]
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"scope_type": {"const": "repository"}}
+      },
+      "then": {
+        "properties": {
+          "children": {"maxItems": 0}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"scope_type": {"const": "organization"}}
+      },
+      "then": {
+        "properties": {
+          "children": {
+            "items": {
+              "properties": {
+                "scope_type": {"const": "repository"}
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"scope_type": {"const": "ecosystem"}}
+      },
+      "then": {
+        "properties": {
+          "children": {
+            "items": {
+              "properties": {
+                "scope_type": {"const": "organization"}
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
