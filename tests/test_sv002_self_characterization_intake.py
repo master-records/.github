@@ -42,7 +42,41 @@ class TestSV002MasterRecordsIntake(unittest.TestCase):
             for name in mod.REQUIRED:self.assertTrue((root/name).is_file())
             manifest=mod.read_manifest(root)
             self.assertEqual(manifest["artifact_set_sha256"],digest)
-            self.assertEqual(manifest["authority_effect"],"NONE_CUSTODY_ONLY")
+            self.assertEqual(manifest["schema"],"master-records.sv002-organization-record-manifest/v1")
+            self.assertEqual(manifest["authority_effect"],"NONE_ORGANIZATION_RECORD_ONLY")
+
+    def test_accepts_pre_rename_manifest_values_under_new_name(self):
+        run_id="SV002-RUN-"+"e"*32
+        request=self.request(run_id)
+        with tempfile.TemporaryDirectory() as td, self.env(**{mod.ORGANIZATION_RECORD_ROOT_ENV:td}):
+            root,_,_=mod.materialize_artifacts(request)
+            path=root/mod.ORGANIZATION_RECORD_MANIFEST
+            old=dict(json.loads(path.read_text()),schema="master-records.sv002-custody-manifest/v1",authority_effect="NONE_CUSTODY_ONLY")
+            path.write_text(json.dumps(old))
+            mod.materialize_artifacts(request)
+            path.write_text(json.dumps(dict(old,artifact_count=0)))
+            with self.assertRaisesRegex(RuntimeError,"organization record manifest write-once collision"):
+                mod.materialize_artifacts(request)
+
+    def run_ingress(self,operation):
+        run_id="SV002-RUN-"+"f"*32
+        request=dict(self.request(run_id),operation=operation,authority_transfer=False)
+        with tempfile.TemporaryDirectory() as td, self.env(**{mod.ORGANIZATION_RECORD_ROOT_ENV:td}):
+            ingress=Path(td)/"in.json"
+            ingress.write_text(json.dumps({"destination":{"org":"master-records","service":mod.SERVICE_ID},"payload":{"request":request}}))
+            with mock.patch.object(mod,"reconstruct",return_value={"status":"PASS"}):
+                return mod.run(ingress)
+
+    def test_run_accepts_new_and_legacy_operation_and_emits_new_fields(self):
+        for operation in ("ORGANIZATION_RECORD_SV002_SELF_CHARACTERIZATION","CUSTODY_SV002_SELF_CHARACTERIZATION"):
+            with self.subTest(operation=operation):
+                result=self.run_ingress(operation)
+                self.assertEqual(result["schema"],"master-records.sv002-self-characterization-organization-record-intake/v1")
+                self.assertEqual(result["authority_effect"],"NONE_ORGANIZATION_RECORD_ONLY")
+                self.assertIn("record_root",result)
+                self.assertNotIn("custody_root",result)
+        with self.assertRaisesRegex(RuntimeError,"operation mismatch"):
+            self.run_ingress("OTHER")
 
     def test_accepts_legacy_root_env(self):
         with tempfile.TemporaryDirectory() as td, self.env(**{mod.LEGACY_MASTER_RECORDS_CUSTODY["root_env"]:td}):
@@ -78,5 +112,6 @@ class TestSV002MasterRecordsIntake(unittest.TestCase):
             result=json.loads(out.read_text())
             self.assertIs(result["master_records_organization_record_established"],False)
             self.assertNotIn("master_records_custody_established",result)
+            self.assertEqual(result["schema"],"master-records.sv002-self-characterization-organization-record-intake/v1")
 
 if __name__=="__main__": unittest.main()

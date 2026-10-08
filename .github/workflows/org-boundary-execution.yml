@@ -5,12 +5,18 @@ on:
       - 'org-boundary/**'
       - 'resident-runtime/sv002_self_characterization_intake.py'
       - 'tests/test_sv002_self_characterization_intake.py'
+      - 'resident-runtime/ecosystem_transition_intake.py'
+      - 'resident-runtime/submit_org_transition_to_master_records.py'
+      - 'tests/test_ecosystem_transition_intake.py'
       - '.github/workflows/org-boundary-execution.yml'
   pull_request:
     paths:
       - 'org-boundary/**'
       - 'resident-runtime/sv002_self_characterization_intake.py'
       - 'tests/test_sv002_self_characterization_intake.py'
+      - 'resident-runtime/ecosystem_transition_intake.py'
+      - 'resident-runtime/submit_org_transition_to_master_records.py'
+      - 'tests/test_ecosystem_transition_intake.py'
       - '.github/workflows/org-boundary-execution.yml'
   workflow_dispatch:
 
@@ -23,6 +29,7 @@ jobs:
         run: |
           python3 org-boundary/tests/test_process_boundary.py
           python3 -m unittest -v tests.test_sv002_self_characterization_intake
+          python3 -m unittest -v tests.test_ecosystem_transition_intake
       - name: Execute fixture when present
         shell: bash
         run: |

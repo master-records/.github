@@ -25,10 +25,19 @@ REQUIRED=(
 MAX_TOTAL_BYTES=16*1024*1024
 ORGANIZATION_RECORD_ROOT_ENV="STEGVERSE_MASTER_RECORDS_SV002_ORGANIZATION_RECORD_ROOT"
 ORGANIZATION_RECORD_MANIFEST="MASTER_RECORDS_ORGANIZATION_RECORD_MANIFEST.json"
+OPERATION="ORGANIZATION_RECORD_SV002_SELF_CHARACTERIZATION"
+MANIFEST_SCHEMA="master-records.sv002-organization-record-manifest/v1"
+INTAKE_SCHEMA="master-records.sv002-self-characterization-organization-record-intake/v1"
+AUTHORITY_EFFECT="NONE_ORGANIZATION_RECORD_ONLY"
 # Pre-rename names, still accepted on read; never written.
+# MASTER-RECORDS-BULK-SEMANTIC-REMEDIATION-002: identifier values before the
+# custody -> organization record rename.
 LEGACY_MASTER_RECORDS_CUSTODY={
     "root_env":"STEGVERSE_MASTER_RECORDS_SV002_CUSTODY_ROOT",
     "manifest":"MASTER_RECORDS_CUSTODY_MANIFEST.json",
+    "operation":"CUSTODY_SV002_SELF_CHARACTERIZATION",
+    "manifest_schema":"master-records.sv002-custody-manifest/v1",
+    "authority_effect":"NONE_CUSTODY_ONLY",
 }
 MANIFEST_BINDING=("experiment_id","run_id","artifact_set_sha256","organization_ledger_root_hash")
 
@@ -110,14 +119,14 @@ def materialize_artifacts(request:dict[str,Any])->tuple[Path,str,str]:
             tmp=target.with_suffix(target.suffix+".tmp")
             tmp.write_bytes(raw); tmp.replace(target)
     manifest={
-        "schema":"master-records.sv002-custody-manifest/v1",
+        "schema":MANIFEST_SCHEMA,
         "experiment_id":EXPERIMENT_ID,
         "run_id":run_id,
         "artifact_set_sha256":artifact_set_sha256,
         "organization_ledger_root_hash":request.get("organization_ledger_root_hash"),
         "artifact_count":len(meta),
         "artifacts":meta,
-        "authority_effect":"NONE_CUSTODY_ONLY",
+        "authority_effect":AUTHORITY_EFFECT,
     }
     legacy_path=root/LEGACY_MASTER_RECORDS_CUSTODY["manifest"]
     if legacy_path.exists():
@@ -126,10 +135,16 @@ def materialize_artifacts(request:dict[str,Any])->tuple[Path,str,str]:
             raise RuntimeError("organization record manifest write-once collision")
     manifest_path=root/ORGANIZATION_RECORD_MANIFEST
     raw_manifest=json.dumps(manifest,indent=2,sort_keys=True)+"\n"
-    if manifest_path.exists() and manifest_path.read_text(encoding="utf-8")!=raw_manifest:
+    if manifest_path.exists() and manifest_path.read_text(encoding="utf-8")!=raw_manifest \
+            and load(manifest_path)!=legacy_manifest(manifest):
         raise RuntimeError("organization record manifest write-once collision")
     if not manifest_path.exists(): manifest_path.write_text(raw_manifest,encoding="utf-8")
     return root,artifact_set_sha256,run_id
+
+def legacy_manifest(manifest:dict[str,Any])->dict[str,Any]:
+    """The same manifest as written under the pre-rename schema and authority effect."""
+    return dict(manifest,schema=LEGACY_MASTER_RECORDS_CUSTODY["manifest_schema"],
+                authority_effect=LEGACY_MASTER_RECORDS_CUSTODY["authority_effect"])
 
 def read_manifest(root:Path)->dict[str,Any]:
     for name in (ORGANIZATION_RECORD_MANIFEST,LEGACY_MASTER_RECORDS_CUSTODY["manifest"]):
@@ -158,29 +173,29 @@ def run(ingress:Path)->dict[str,Any]:
     if (env.get("destination") or {}).get("service")!=SERVICE_ID: raise RuntimeError("wrong destination service")
     payload=env.get("payload") or {}
     request=payload.get("request") if isinstance(payload.get("request"),dict) else payload
-    if request.get("operation")!="CUSTODY_SV002_SELF_CHARACTERIZATION": raise RuntimeError("operation mismatch")
+    if request.get("operation") not in (OPERATION,LEGACY_MASTER_RECORDS_CUSTODY["operation"]): raise RuntimeError("operation mismatch")
     if request.get("authority_transfer") is not False: raise RuntimeError("authority transfer prohibited")
     root,artifact_set_sha256,run_id=materialize_artifacts(request)
     reconstruction=reconstruct(root)
     return {
-        "schema":"master-records.sv002-self-characterization-custody-intake/v1",
+        "schema":INTAKE_SCHEMA,
         "state":"RECORDED_AND_RECONSTRUCTED",
         "experiment_id":EXPERIMENT_ID,
         "run_id":run_id,
         "artifact_set_sha256":artifact_set_sha256,
-        "custody_root":str(root),
+        "record_root":str(root),
         "reconstruction_receipt_path":str(root/"STEGVERSE_002_SELF_CHARACTERIZATION_RECONSTRUCTION_RECEIPT.json"),
         "reconstruction_receipt":reconstruction,
         "master_records_organization_record_established":True,
         "authority_transfer":False,
-        "authority_effect":"NONE_CUSTODY_ONLY",
+        "authority_effect":AUTHORITY_EFFECT,
     }
 
 def main()->int:
     ap=argparse.ArgumentParser();ap.add_argument("--ingress",type=Path,required=True);ap.add_argument("--out",type=Path,required=True);a=ap.parse_args()
     try: result=run(a.ingress.resolve());code=0
     except Exception as exc:
-        result={"schema":"master-records.sv002-self-characterization-custody-intake/v1","state":"BLOCKED","reason":str(exc),"master_records_organization_record_established":False,"authority_transfer":False,"authority_effect":"NONE_BLOCKED"};code=2
+        result={"schema":INTAKE_SCHEMA,"state":"BLOCKED","reason":str(exc),"master_records_organization_record_established":False,"authority_transfer":False,"authority_effect":"NONE_BLOCKED"};code=2
     a.out.parent.mkdir(parents=True,exist_ok=True)
     a.out.write_text(json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8")
     print(json.dumps(result,sort_keys=True))

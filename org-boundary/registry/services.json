@@ -34,6 +34,7 @@
       "boundary_role": "INTERNAL_ENDPOINT",
       "profile_status": "ACTIVE",
       "accepts": [
+        "ORGANIZATION_RECORD_ORGANIZATION_TRANSITION",
         "CUSTODY_ORGANIZATION_TRANSITION"
       ],
       "endpoint_adapter": "resident-runtime/ecosystem_transition_intake.py",
@@ -66,6 +67,7 @@
       "boundary_role": "INTERNAL_ENDPOINT",
       "profile_status": "ACTIVE",
       "accepts": [
+        "ORGANIZATION_RECORD_SV002_SELF_CHARACTERIZATION",
         "CUSTODY_SV002_SELF_CHARACTERIZATION"
       ],
       "endpoint_adapter": "resident-runtime/sv002_self_characterization_intake.py",
