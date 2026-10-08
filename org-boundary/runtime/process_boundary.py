@@ -24,7 +24,7 @@ def main():
     missing=[k for k in required if k not in env]
     if missing: raise SystemExit("missing:"+",".join(missing))
     if env["destination"]["org"]!=reg["organization"]: raise SystemExit("wrong-destination-org")
-    svc=next((s for s in reg["services"] if s["service_id"]==env["destination"]["service"]),None)
+    svc=next((s for s in reg["services"] if env["destination"]["service"] in [s["service_id"],*s.get("legacy_service_ids",[])]),None)
     if not svc: raise SystemExit("unknown-service")
     role=svc.get("boundary_role")
     if env["transition"]["authority_effect"] not in ["NONE","ADMIT","DENY","DEFER","CONDITIONAL"]: raise SystemExit("bad-authority-effect")

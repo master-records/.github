@@ -73,7 +73,7 @@ def load_registry(root:Path)->dict[str,Any]:
 def dispatch(root:Path, packet:dict[str,Any])->dict[str,Any]:
     registry=load_registry(root)
     if packet["destination"]["org"]!=registry["organization"]: raise ValueError("wrong_destination_org")
-    service=next((s for s in registry["services"] if s["service_id"]==packet["destination"]["service"]),None)
+    service=next((s for s in registry["services"] if packet["destination"]["service"] in [s["service_id"],*s.get("legacy_service_ids",[])]),None)
     if service is None: raise ValueError("unknown_service")
     role=service.get("boundary_role")
     adapter=service.get("endpoint_adapter")
