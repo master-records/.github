@@ -1,3 +1,3 @@
 # Organization Description
 
-Durable custody, orchestration, monitoring, and reconstruction surfaces for StegVerse transition records and end-of-life evidence.
+Organization records, orchestration, monitoring, and reconstruction surfaces for StegVerse transition records, including end-of-life records.
