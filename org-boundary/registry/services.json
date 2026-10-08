@@ -29,7 +29,11 @@
       "runtime_required_for_consumption": true
     },
     {
-      "service_id": "master-records.ecosystem-transition-ledger",
+      "service_id": "organization.ecosystem-transition-ledger",
+      "legacy_service_ids": [
+        "master-records.ecosystem-transition-ledger"
+      ],
+      "legacy_reference": "MASTER-RECORDS-BULK-SEMANTIC-REMEDIATION-002",
       "repository": "master-records/orchestration",
       "boundary_role": "INTERNAL_ENDPOINT",
       "profile_status": "ACTIVE",

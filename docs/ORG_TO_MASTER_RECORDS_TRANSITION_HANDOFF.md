@@ -8,9 +8,9 @@ Publisher: `resident-runtime/submit_org_transition_to_master_records.py`
 
 Route:
 
-`master-records/.github -> InTr -> master-records/.github -> master-records.ecosystem-transition-ledger -> master-records/orchestration`
+`master-records/.github -> InTr -> master-records/.github -> organization.ecosystem-transition-ledger -> master-records/orchestration`
 
-The packet carries operation `ORGANIZATION_RECORD_ORGANIZATION_TRANSITION` and transition reference `ecosystem.transition.organization-record.v1`; the publisher reports `PUBLISHED_FOR_ORGANIZATION_RECORD`. The intake returns the ledger receipt as `record_receipt` with authority effect `NONE_ORGANIZATION_RECORD_ONLY`. The pre-rename operation `CUSTODY_ORGANIZATION_TRANSITION` is still accepted on read (MASTER-RECORDS-BULK-SEMANTIC-REMEDIATION-002).
+The packet carries operation `ORGANIZATION_RECORD_ORGANIZATION_TRANSITION` and transition reference `ecosystem.transition.organization-record.v1`; the publisher reports `PUBLISHED_FOR_ORGANIZATION_RECORD`. The intake returns the ledger receipt as `record_receipt` with authority effect `NONE_ORGANIZATION_RECORD_ONLY`. The pre-rename operation `CUSTODY_ORGANIZATION_TRANSITION` and the pre-rename destination service `master-records.ecosystem-transition-ledger` are still accepted on read (MASTER-RECORDS-BULK-SEMANTIC-REMEDIATION-002).
 
 The packet carries the already-hash-bound organization receipt. Transport and recording do not create source authority. Replay stays with the repo/org layers of the organization transition ledger; Master Records uses the record for reconstruction.
 

@@ -7,6 +7,10 @@ OPERATION="ORGANIZATION_RECORD_ORGANIZATION_TRANSITION"
 # MASTER-RECORDS-BULK-SEMANTIC-REMEDIATION-002: operation value before the
 # custody -> organization record rename; still accepted on read, never written.
 LEGACY_CUSTODY_OPERATION="CUSTODY_ORGANIZATION_TRANSITION"
+DESTINATION_SERVICE="organization.ecosystem-transition-ledger"
+# MASTER-RECORDS-BULK-SEMANTIC-REMEDIATION-002: destination service before the
+# Master Records -> Organization rename; still accepted on read, never written.
+LEGACY_DESTINATION_SERVICE="master-records.ecosystem-transition-ledger"
 
 def load(p): return json.loads(Path(p).read_text())
 
@@ -32,7 +36,7 @@ def resolve_orchestration():
 def run(ingress:Path):
     env=load(ingress)
     if (env.get("destination") or {}).get("org")!="master-records": raise RuntimeError("wrong destination organization")
-    if (env.get("destination") or {}).get("service")!="master-records.ecosystem-transition-ledger": raise RuntimeError("wrong destination service")
+    if (env.get("destination") or {}).get("service") not in (DESTINATION_SERVICE,LEGACY_DESTINATION_SERVICE): raise RuntimeError("wrong destination service")
     payload=env.get("payload") or {}
     request=payload.get("request") if isinstance(payload.get("request"),dict) else payload
     if request.get("operation") not in (OPERATION,LEGACY_CUSTODY_OPERATION): raise RuntimeError("operation mismatch")
