@@ -79,7 +79,8 @@ Formalized coverage model:
 ```text
 repository ledger = granular governed transition history
 organization ledger = ordered coverage of repository roots + org-native transitions
-Master Records = ordered coverage of organization roots + ecosystem-native transitions
+organization transition ledger (ecosystem layer) = ordered coverage of organization roots + ecosystem-native transitions
+Master Records = organization records of those roots, used for reconstruction
 ```
 
 Upper layers cover lower layers by exact ordered root/range linkage rather than duplicating every granular receipt. Every accepted aggregate must remain deterministically resolvable downward, and any granular transition must be provable upward through repo -> org -> ecosystem inclusion.

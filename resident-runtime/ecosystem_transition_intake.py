@@ -42,14 +42,14 @@ def run(ingress:Path):
         td=Path(td); rp=td/"org-receipt.json"; rp.write_text(json.dumps(org_receipt,indent=2,sort_keys=True)+"\n")
         cmd=["python3",str(root/"services/ecosystem_transition_ledger.py"),"--org-receipt",str(rp),"--predecessor-ecosystem-state-sha256",str(pre),"--successor-ecosystem-state-sha256",str(post),"--relation-evidence-json",json.dumps(request.get("relation_evidence") or {},sort_keys=True)]
         done=subprocess.run(cmd,cwd=root,capture_output=True,text=True,check=False)
-        if done.returncode!=0: raise RuntimeError("ecosystem custody failed:"+done.stderr[-512:])
+        if done.returncode!=0: raise RuntimeError("organization transition ledger recording failed:"+done.stderr[-512:])
         record=None
         for line in reversed(done.stdout.splitlines()):
             try:
                 v=json.loads(line)
                 if isinstance(v,dict): record=v; break
             except Exception: pass
-        if not record: raise RuntimeError("ecosystem custody receipt missing")
+        if not record: raise RuntimeError("organization transition ledger receipt missing")
     return {"schema":"master-records.ecosystem-transition-intake/v1","state":"RECORDED","custody_receipt":record,"authority_effect":"NONE_CUSTODY_ONLY","authority_transfer":False}
 
 def main():

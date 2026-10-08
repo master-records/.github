@@ -1,8 +1,8 @@
 # master-records
 
-**master-records is the StegVerse custody and reconstruction organization for durable transition evidence.**
+**master-records is the StegVerse organization for organization records and their reconstruction.**
 
-It holds the systems that monitor, orchestrate, and preserve records needed to reconstruct what happened across governed work.
+It holds the systems that monitor, orchestrate, and keep the organization records needed to reconstruct what happened across governed work.
 
 ## What belongs here
 
@@ -15,6 +15,6 @@ The organization includes:
 
 ## Role in the ecosystem
 
-Master Records is a destination for durable evidence and end-of-life transition records. It is designed to preserve provenance, receipts, state relationships, and reconstruction paths.
+Master Records holds organization records, including end-of-life transition records, with the provenance, receipts, state relationships, and reconstruction paths needed to reconstruct them. Custody and retention of the underlying evidence stay with the Organization that produced it.
 
-Custody is not authority: recording or retaining a transition does not retroactively authorize it, and a Master Records entry does not replace the governing admission, execution, credential, or transition boundary that produced it.
+Recording a transition does not authorize it. Admission, gates, closure, and prerequisites belong to Interlock/InTr, and ledger roles belong to the organization transition ledger.

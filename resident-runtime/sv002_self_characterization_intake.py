@@ -23,6 +23,14 @@ REQUIRED=(
     "ORGANIZATION_LEDGER_ROOT.json",
 )
 MAX_TOTAL_BYTES=16*1024*1024
+ORGANIZATION_RECORD_ROOT_ENV="STEGVERSE_MASTER_RECORDS_SV002_ORGANIZATION_RECORD_ROOT"
+ORGANIZATION_RECORD_MANIFEST="MASTER_RECORDS_ORGANIZATION_RECORD_MANIFEST.json"
+# Pre-rename names, still accepted on read; never written.
+LEGACY_MASTER_RECORDS_CUSTODY={
+    "root_env":"STEGVERSE_MASTER_RECORDS_SV002_CUSTODY_ROOT",
+    "manifest":"MASTER_RECORDS_CUSTODY_MANIFEST.json",
+}
+MANIFEST_BINDING=("experiment_id","run_id","artifact_set_sha256","organization_ledger_root_hash")
 
 def canon(v:Any)->bytes:
     return json.dumps(v,sort_keys=True,separators=(",",":"),ensure_ascii=False,allow_nan=False).encode()
@@ -35,8 +43,8 @@ def load(path:Path)->dict[str,Any]:
     if not isinstance(v,dict): raise RuntimeError(f"expected object:{path}")
     return v
 
-def custody_base()->Path:
-    override=os.getenv("STEGVERSE_MASTER_RECORDS_SV002_CUSTODY_ROOT")
+def organization_record_base()->Path:
+    override=os.getenv(ORGANIZATION_RECORD_ROOT_ENV) or os.getenv(LEGACY_MASTER_RECORDS_CUSTODY["root_env"])
     if override: return Path(override).expanduser().resolve()
     base=Path(os.getenv("XDG_STATE_HOME",str(Path.home()/".local/state")))
     return (base/"stegverse/master-records/sv002-self-characterization").resolve()
@@ -76,7 +84,7 @@ def materialize_artifacts(request:dict[str,Any])->tuple[Path,str,str]:
         if len(raw)!=row.get("size") or sha256_bytes(raw)!=row.get("sha256"):
             raise RuntimeError(f"artifact digest mismatch:{name}")
         total+=len(raw)
-        if total>MAX_TOTAL_BYTES: raise RuntimeError("artifact set exceeds custody intake limit")
+        if total>MAX_TOTAL_BYTES: raise RuntimeError("artifact set exceeds organization record intake limit")
         decoded[name]=raw
         meta.append({"name":name,"sha256":row["sha256"],"size":row["size"]})
     artifact_set_sha256=sha256_bytes(canon(meta))
@@ -92,12 +100,12 @@ def materialize_artifacts(request:dict[str,Any])->tuple[Path,str,str]:
         raise RuntimeError("run_id artifact binding mismatch")
     if org_root.get("root_hash")!=request.get("organization_ledger_root_hash"):
         raise RuntimeError("organization ledger root handoff binding mismatch")
-    root=custody_base()/run_id/"artifact-root"
+    root=organization_record_base()/run_id/"artifact-root"
     root.mkdir(parents=True,exist_ok=True)
     for name,raw in decoded.items():
         target=root/name
         if target.exists():
-            if target.read_bytes()!=raw: raise RuntimeError(f"custody write-once collision:{name}")
+            if target.read_bytes()!=raw: raise RuntimeError(f"organization record write-once collision:{name}")
         else:
             tmp=target.with_suffix(target.suffix+".tmp")
             tmp.write_bytes(raw); tmp.replace(target)
@@ -111,12 +119,22 @@ def materialize_artifacts(request:dict[str,Any])->tuple[Path,str,str]:
         "artifacts":meta,
         "authority_effect":"NONE_CUSTODY_ONLY",
     }
-    manifest_path=root/"MASTER_RECORDS_CUSTODY_MANIFEST.json"
+    legacy_path=root/LEGACY_MASTER_RECORDS_CUSTODY["manifest"]
+    if legacy_path.exists():
+        legacy=load(legacy_path)
+        if any(legacy.get(k)!=manifest[k] for k in MANIFEST_BINDING):
+            raise RuntimeError("organization record manifest write-once collision")
+    manifest_path=root/ORGANIZATION_RECORD_MANIFEST
     raw_manifest=json.dumps(manifest,indent=2,sort_keys=True)+"\n"
     if manifest_path.exists() and manifest_path.read_text(encoding="utf-8")!=raw_manifest:
-        raise RuntimeError("custody manifest write-once collision")
+        raise RuntimeError("organization record manifest write-once collision")
     if not manifest_path.exists(): manifest_path.write_text(raw_manifest,encoding="utf-8")
     return root,artifact_set_sha256,run_id
+
+def read_manifest(root:Path)->dict[str,Any]:
+    for name in (ORGANIZATION_RECORD_MANIFEST,LEGACY_MASTER_RECORDS_CUSTODY["manifest"]):
+        if (root/name).is_file(): return load(root/name)
+    raise RuntimeError("organization record manifest missing")
 
 def reconstruct(root:Path)->dict[str,Any]:
     orchestration=resolve_orchestration()
@@ -153,7 +171,7 @@ def run(ingress:Path)->dict[str,Any]:
         "custody_root":str(root),
         "reconstruction_receipt_path":str(root/"STEGVERSE_002_SELF_CHARACTERIZATION_RECONSTRUCTION_RECEIPT.json"),
         "reconstruction_receipt":reconstruction,
-        "master_records_custody_established":True,
+        "master_records_organization_record_established":True,
         "authority_transfer":False,
         "authority_effect":"NONE_CUSTODY_ONLY",
     }
@@ -162,7 +180,7 @@ def main()->int:
     ap=argparse.ArgumentParser();ap.add_argument("--ingress",type=Path,required=True);ap.add_argument("--out",type=Path,required=True);a=ap.parse_args()
     try: result=run(a.ingress.resolve());code=0
     except Exception as exc:
-        result={"schema":"master-records.sv002-self-characterization-custody-intake/v1","state":"BLOCKED","reason":str(exc),"master_records_custody_established":False,"authority_transfer":False,"authority_effect":"NONE_BLOCKED"};code=2
+        result={"schema":"master-records.sv002-self-characterization-custody-intake/v1","state":"BLOCKED","reason":str(exc),"master_records_organization_record_established":False,"authority_transfer":False,"authority_effect":"NONE_BLOCKED"};code=2
     a.out.parent.mkdir(parents=True,exist_ok=True)
     a.out.write_text(json.dumps(result,indent=2,sort_keys=True)+"\n",encoding="utf-8")
     print(json.dumps(result,sort_keys=True))

@@ -2,7 +2,7 @@
 
 Organization: `master-records`
 
-After a repository transition is verified and rolled into the organization ledger, the exact `stegverse.organization-transition-receipt/v1` may be submitted to Master Records through the existing organization federation.
+After a repository transition is verified and rolled into the organization ledger, the exact `stegverse.organization-transition-receipt/v1` may be submitted to Master Records as an organization record through the existing organization federation.
 
 Publisher: `resident-runtime/submit_org_transition_to_master_records.py`
 
@@ -10,12 +10,12 @@ Route:
 
 `master-records/.github -> InTr -> master-records/.github -> master-records.ecosystem-transition-ledger -> master-records/orchestration`
 
-The packet carries the already-hash-bound organization receipt. Transport and custody do not create source authority and do not replace repo/org replay.
+The packet carries the already-hash-bound organization receipt. Transport and recording do not create source authority. Replay stays with the repo/org layers of the organization transition ledger; Master Records uses the record for reconstruction.
 
 
-## SV002 self-characterization custody endpoint — 2026-09-01
+## SV002 self-characterization organization record endpoint — 2026-09-01
 
-A dedicated custody/reconstruction endpoint now exists for the canonical StegVerse-002 self-characterization artifact set:
+A dedicated organization record/reconstruction endpoint now exists for the canonical StegVerse-002 self-characterization artifact set:
 
 `master-records.sv002-self-characterization-reconstruction`
 
@@ -29,11 +29,11 @@ StegVerse-002/.github
 -> InTr/federation
 -> master-records/.github boundary
 -> master-records.sv002-self-characterization-reconstruction
--> write-once Master Records custody root
+-> write-once Master Records organization record root
 -> master-records/orchestration deterministic verifier
 -> reconstruction receipt
 ```
 
-The intake validates the exact bounded artifact list, per-artifact SHA-256/size, aggregate artifact-set hash, experiment ID, RunID, and organization-ledger-root binding before materialization. Custody is written under the Master Records state domain, not the source execution root.
+The intake validates the exact bounded artifact list, per-artifact SHA-256/size, aggregate artifact-set hash, experiment ID, RunID, and organization-ledger-root binding before materialization. The organization record is written under the Master Records state domain (`STEGVERSE_MASTER_RECORDS_SV002_ORGANIZATION_RECORD_ROOT`, manifest `MASTER_RECORDS_ORGANIZATION_RECORD_MANIFEST.json`), not the source execution root. The pre-rename root variable and manifest name are still read.
 
-A successful response requires deterministic reconstruction PASS. Receipt ingestion, custody, reconstruction, release, activation, and authority remain distinct states.
+A successful response requires deterministic reconstruction PASS. Receipt ingestion, organization recording, reconstruction, release, activation, and authority remain distinct states; evidence custody stays with the Organization.

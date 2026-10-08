@@ -13,7 +13,8 @@ The governing model is:
 ```text
 repository ledger = granular event history for one repository
 organization ledger = authoritative coverage of repositories beneath one organization
-Master Records = canonical ecosystem coverage of organization ledgers plus ecosystem-native transitions
+organization transition ledger (ecosystem layer) = canonical ecosystem coverage of organization ledgers plus ecosystem-native transitions
+Master Records = organization records of the covered roots, used for reconstruction
 ```
 
 Coverage means ordered, integrity-bound, reconstructable inclusion. Coverage does not require payload duplication.
@@ -22,7 +23,7 @@ Coverage means ordered, integrity-bound, reconstructable inclusion. Coverage doe
 
 1. The repository is the highest-resolution routine ledger boundary.
 2. The organization ledger covers every repository beneath that organization by ordered receipt-root reference and may also contain organization-native transitions.
-3. Master Records covers every participating organization by ordered organization-root reference and may also contain ecosystem-native or cross-organization transitions.
+3. The ecosystem layer of the organization transition ledger covers every participating organization by ordered organization-root reference and may also contain ecosystem-native or cross-organization transitions.
 4. An upper layer MUST NOT claim coverage of a lower-layer interval unless the exact ordered interval is bound by hash/root and remains resolvable.
 5. Aggregation MUST preserve sequence. Set membership alone is insufficient.
 6. Missing, unavailable, or unverifiable descendants remain NOT_ESTABLISHED; an upper root MUST NOT fabricate lower evidence.
@@ -88,21 +89,23 @@ organization release state changed
 
 An organization root MUST identify every descendant repository root that contributes to that organization state. It SHOULD retain only the aggregation metadata necessary for deterministic resolution rather than duplicating each underlying event.
 
-## Ecosystem / Master Records ledger
+## Ecosystem layer of the organization transition ledger
 
-Master Records is the canonical ecosystem coverage layer.
+The ecosystem layer of the organization transition ledger is the canonical ecosystem coverage layer.
 
 It contains:
 
 1. ordered references to organization roots;
 2. ecosystem-native transitions;
 3. cross-organization transitions;
-4. custody and reconstruction evidence for the roots it accepts.
+4. reconstruction references for the roots it accepts.
 
-Master Records coverage does not mean central ingestion of every repository event. It means that every accepted ecosystem-level claim has a deterministic evidence path:
+Master Records holds the organization records for those roots and uses them for reconstruction; custody of the underlying evidence stays with the Organization.
+
+Ecosystem-layer coverage does not mean central ingestion of every repository event. It means that every accepted ecosystem-level claim has a deterministic evidence path:
 
 ```text
-Master Records root
+ecosystem root
   -> organization root
       -> repository root
           -> individual transition receipts
@@ -162,7 +165,7 @@ Used to prove that a granular transition contributes to a higher-level canonical
 transition receipt
 -> repository ordered root
 -> organization ordered root
--> Master Records ordered root
+-> ecosystem ordered root
 ```
 
 Each step MUST verify exact inclusion and predecessor continuity.
@@ -262,7 +265,7 @@ organization-level ledger/root
   -> <org>/.github organizational boundary and aggregation surfaces
 
 ecosystem-level ledger/root
-  -> master-records/orchestration custody and reconstruction surfaces
+  -> master-records/orchestration organization record and reconstruction surfaces
 ```
 
 ## Required validation
@@ -271,9 +274,9 @@ A conforming implementation must demonstrate:
 
 1. two or more granular repository receipts aggregate into a repository root;
 2. that repository root is included in an organization root;
-3. that organization root is included in a Master Records root;
+3. that organization root is included in an ecosystem root;
 4. top-down reconstruction reaches the exact source receipts;
-5. bottom-up inclusion proves the exact Master Records root;
+5. bottom-up inclusion proves the exact ecosystem root;
 6. receipt reordering breaks ordered-root verification;
 7. missing descendant evidence fails closed;
 8. live and replay projections produce the same transition order for a frozen run.
