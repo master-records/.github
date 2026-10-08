@@ -3,6 +3,11 @@ from __future__ import annotations
 import argparse,json,os,subprocess,tempfile
 from pathlib import Path
 
+OPERATION="ORGANIZATION_RECORD_ORGANIZATION_TRANSITION"
+# MASTER-RECORDS-BULK-SEMANTIC-REMEDIATION-002: operation value before the
+# custody -> organization record rename; still accepted on read, never written.
+LEGACY_CUSTODY_OPERATION="CUSTODY_ORGANIZATION_TRANSITION"
+
 def load(p): return json.loads(Path(p).read_text())
 
 def orchestration_roots():
@@ -30,7 +35,7 @@ def run(ingress:Path):
     if (env.get("destination") or {}).get("service")!="master-records.ecosystem-transition-ledger": raise RuntimeError("wrong destination service")
     payload=env.get("payload") or {}
     request=payload.get("request") if isinstance(payload.get("request"),dict) else payload
-    if request.get("operation")!="CUSTODY_ORGANIZATION_TRANSITION": raise RuntimeError("operation mismatch")
+    if request.get("operation") not in (OPERATION,LEGACY_CUSTODY_OPERATION): raise RuntimeError("operation mismatch")
     if request.get("authority_transfer",False) is not False: raise RuntimeError("authority transfer prohibited")
     org_receipt=request.get("organization_receipt")
     if not isinstance(org_receipt,dict): raise RuntimeError("organization receipt missing")
@@ -50,7 +55,7 @@ def run(ingress:Path):
                 if isinstance(v,dict): record=v; break
             except Exception: pass
         if not record: raise RuntimeError("organization transition ledger receipt missing")
-    return {"schema":"master-records.ecosystem-transition-intake/v1","state":"RECORDED","custody_receipt":record,"authority_effect":"NONE_CUSTODY_ONLY","authority_transfer":False}
+    return {"schema":"master-records.ecosystem-transition-intake/v1","state":"RECORDED","record_receipt":record,"authority_effect":"NONE_ORGANIZATION_RECORD_ONLY","authority_transfer":False}
 
 def main():
     p=argparse.ArgumentParser();p.add_argument("--ingress",type=Path,required=True);p.add_argument("--out",type=Path,required=True);a=p.parse_args()

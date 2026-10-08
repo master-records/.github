@@ -10,8 +10,8 @@ def main():
  receipt=load(a.org_receipt)
  if receipt.get("schema")!="stegverse.organization-transition-receipt/v1":raise SystemExit("organization receipt schema mismatch")
  if receipt.get("organization")!="master-records":raise SystemExit("organization receipt owner mismatch")
- payload={"operation":"CUSTODY_ORGANIZATION_TRANSITION","organization_receipt":receipt,"predecessor_ecosystem_state_sha256":a.predecessor_ecosystem_state_sha256,"successor_ecosystem_state_sha256":a.successor_ecosystem_state_sha256,"relation_evidence":json.loads(a.relation_evidence_json),"authority_transfer":False}
- packet=K.build_packet(origin_org="master-records",origin_service="master-records.org-control",destination_org="master-records",destination_service="master-records.ecosystem-transition-ledger",payload=payload,transition_reference="ecosystem.transition.custody.v1",authority_effect="NONE")
+ payload={"operation":"ORGANIZATION_RECORD_ORGANIZATION_TRANSITION","organization_receipt":receipt,"predecessor_ecosystem_state_sha256":a.predecessor_ecosystem_state_sha256,"successor_ecosystem_state_sha256":a.successor_ecosystem_state_sha256,"relation_evidence":json.loads(a.relation_evidence_json),"authority_transfer":False}
+ packet=K.build_packet(origin_org="master-records",origin_service="master-records.org-control",destination_org="master-records",destination_service="master-records.ecosystem-transition-ledger",payload=payload,transition_reference="ecosystem.transition.organization-record.v1",authority_effect="NONE")
  published=K.publish_packet(packet)
- print(json.dumps({"status":"PUBLISHED_FOR_CUSTODY","packet_id":packet["packet_id"],"frame_sha256":published["frame"]["frame_sha256"],"authority_effect":"NONE"},sort_keys=True))
+ print(json.dumps({"status":"PUBLISHED_FOR_ORGANIZATION_RECORD","packet_id":packet["packet_id"],"frame_sha256":published["frame"]["frame_sha256"],"authority_effect":"NONE"},sort_keys=True))
 if __name__=="__main__":main()
