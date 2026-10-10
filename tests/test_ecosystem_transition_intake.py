@@ -29,6 +29,23 @@ class TestEcosystemTransitionIntake(unittest.TestCase):
                  mock.patch.object(intake.subprocess,"run",return_value=done):
                 return intake.run(ingress)
 
+    def test_recording_does_not_require_or_forward_ecosystem_state_hashes(self):
+        with tempfile.TemporaryDirectory() as td:
+            ingress=Path(td)/"in.json"
+            request={"operation":intake.OPERATION,"organization_receipt":org_receipt(),
+                     "authority_transfer":False}
+            ingress.write_text(json.dumps({"destination":{"org":"master-records",
+                "service":intake.DESTINATION_SERVICE},"payload":{"request":request}}))
+            done=subprocess.CompletedProcess([],0,stdout=json.dumps({"receipt":"r"})+"\n",stderr="")
+            with mock.patch.object(intake,"resolve_orchestration",return_value=Path(td)), \
+                 mock.patch.object(intake.subprocess,"run",return_value=done) as called:
+                result=intake.run(ingress)
+            self.assertEqual(result["state"],"RECORDED")
+            cmd=called.call_args.args[0]
+            self.assertNotIn("--predecessor-ecosystem-state-sha256",cmd)
+            self.assertNotIn("--successor-ecosystem-state-sha256",cmd)
+            self.assertIn("--org-receipt",cmd)
+
     def test_accepts_new_and_legacy_operation_and_emits_new_fields(self):
         for operation in ("ORGANIZATION_RECORD_ORGANIZATION_TRANSITION","CUSTODY_ORGANIZATION_TRANSITION"):
             with self.subTest(operation=operation):

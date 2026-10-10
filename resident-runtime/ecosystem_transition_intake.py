@@ -71,13 +71,10 @@ def run(ingress:Path):
     if request.get("authority_transfer",False) is not False: raise RuntimeError("authority transfer prohibited")
     release_predecessor=verify_release_predecessor(request)
     org_receipt=request["organization_receipt"]
-    pre=request.get("predecessor_ecosystem_state_sha256")
-    post=request.get("successor_ecosystem_state_sha256")
-    if not pre or not post: raise RuntimeError("ecosystem state hashes required")
     root=resolve_orchestration()
     with tempfile.TemporaryDirectory() as td:
         td=Path(td); rp=td/"org-receipt.json"; rp.write_text(json.dumps(org_receipt,indent=2,sort_keys=True)+"\n")
-        cmd=["python3",str(root/"services/ecosystem_transition_ledger.py"),"--org-receipt",str(rp),"--predecessor-ecosystem-state-sha256",str(pre),"--successor-ecosystem-state-sha256",str(post),"--relation-evidence-json",json.dumps(request.get("relation_evidence") or {},sort_keys=True)]
+        cmd=["python3",str(root/"services/ecosystem_transition_ledger.py"),"--org-receipt",str(rp),"--relation-evidence-json",json.dumps(request.get("relation_evidence") or {},sort_keys=True)]
         done=subprocess.run(cmd,cwd=root,capture_output=True,text=True,check=False)
         if done.returncode!=0: raise RuntimeError("organization transition ledger recording failed:"+done.stderr[-512:])
         record=None
