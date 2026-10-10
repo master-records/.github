@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import argparse,json,os,subprocess,tempfile
+import argparse,hashlib,json,os,subprocess,tempfile
 from pathlib import Path
 
 OPERATION="ORGANIZATION_RECORD_ORGANIZATION_TRANSITION"
@@ -12,7 +12,35 @@ DESTINATION_SERVICE="organization.ecosystem-transition-ledger"
 # Master Records -> Organization rename; still accepted on read, never written.
 LEGACY_DESTINATION_SERVICE="master-records.ecosystem-transition-ledger"
 
+ORGANIZATION_RECEIPT_SCHEMA="stegverse.organization-transition-receipt/v1"
+
 def load(p): return json.loads(Path(p).read_text())
+
+def receipt_digest(receipt):
+    body=dict(receipt); body.pop("receipt_sha256",None)
+    return "sha256:"+hashlib.sha256(json.dumps(body,sort_keys=True,separators=(",",":"),ensure_ascii=False).encode()).hexdigest()
+
+def verify_release_predecessor(request):
+    """The release predecessor is a verified organization receipt-chain segment.
+
+    `organization_receipt` is the segment head; optional `organization_receipt_segment`
+    lists the receipts preceding it, oldest first. Master Records only checks the
+    segment; it does not create, admit, authorize, infer or repair any transition.
+    """
+    head=request.get("organization_receipt")
+    if not isinstance(head,dict): raise RuntimeError("organization receipt missing")
+    prior=request.get("organization_receipt_segment") or []
+    if not isinstance(prior,list): raise RuntimeError("organization receipt-chain segment invalid")
+    segment=[*prior,head]; organization=None; previous=None
+    for index,receipt in enumerate(segment):
+        if not isinstance(receipt,dict) or receipt.get("schema")!=ORGANIZATION_RECEIPT_SCHEMA: raise RuntimeError("organization receipt schema mismatch")
+        if receipt.get("receipt_sha256")!=receipt_digest(receipt): raise RuntimeError("organization receipt hash mismatch")
+        if organization is None: organization=receipt.get("organization")
+        if not organization or receipt.get("organization")!=organization: raise RuntimeError("organization receipt-chain segment owner mismatch")
+        if index and receipt.get("previous_receipt_sha256")!=previous: raise RuntimeError("organization receipt-chain segment linkage broken")
+        previous=receipt["receipt_sha256"]
+    return {"organization":organization,"segment_length":len(segment),"segment_head_sha256":previous,
+            "segment_base_previous_receipt_sha256":segment[0].get("previous_receipt_sha256")}
 
 def orchestration_roots():
     out=[]
@@ -41,8 +69,8 @@ def run(ingress:Path):
     request=payload.get("request") if isinstance(payload.get("request"),dict) else payload
     if request.get("operation") not in (OPERATION,LEGACY_CUSTODY_OPERATION): raise RuntimeError("operation mismatch")
     if request.get("authority_transfer",False) is not False: raise RuntimeError("authority transfer prohibited")
-    org_receipt=request.get("organization_receipt")
-    if not isinstance(org_receipt,dict): raise RuntimeError("organization receipt missing")
+    release_predecessor=verify_release_predecessor(request)
+    org_receipt=request["organization_receipt"]
     pre=request.get("predecessor_ecosystem_state_sha256")
     post=request.get("successor_ecosystem_state_sha256")
     if not pre or not post: raise RuntimeError("ecosystem state hashes required")
@@ -59,7 +87,7 @@ def run(ingress:Path):
                 if isinstance(v,dict): record=v; break
             except Exception: pass
         if not record: raise RuntimeError("organization transition ledger receipt missing")
-    return {"schema":"master-records.ecosystem-transition-intake/v1","state":"RECORDED","record_receipt":record,"authority_effect":"NONE_ORGANIZATION_RECORD_ONLY","authority_transfer":False}
+    return {"schema":"master-records.ecosystem-transition-intake/v1","state":"RECORDED","record_receipt":record,"release_predecessor":release_predecessor,"authority_effect":"NONE_ORGANIZATION_RECORD_ONLY","authority_transfer":False}
 
 def main():
     p=argparse.ArgumentParser();p.add_argument("--ingress",type=Path,required=True);p.add_argument("--out",type=Path,required=True);a=p.parse_args()

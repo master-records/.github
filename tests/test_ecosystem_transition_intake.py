@@ -11,10 +11,16 @@ def load_module(name,rel):
 intake=load_module("mr_ecosystem_transition_intake","resident-runtime/ecosystem_transition_intake.py")
 submit=load_module("mr_submit_org_transition","resident-runtime/submit_org_transition_to_master_records.py")
 
+def org_receipt(previous=None,organization="master-records",n=0):
+    body={"schema":"stegverse.organization-transition-receipt/v1","organization":organization,"repo_transition_id":f"t{n}",
+          "previous_receipt_sha256":previous}
+    return {**body,"receipt_sha256":intake.receipt_digest(body)}
+
 class TestEcosystemTransitionIntake(unittest.TestCase):
-    def run_ingress(self,operation,service="organization.ecosystem-transition-ledger"):
-        request={"operation":operation,"organization_receipt":{"schema":"x"},"predecessor_ecosystem_state_sha256":"a"*64,
+    def run_ingress(self,operation,service="organization.ecosystem-transition-ledger",receipt=None,segment=None):
+        request={"operation":operation,"organization_receipt":receipt or org_receipt(),"predecessor_ecosystem_state_sha256":"a"*64,
                  "successor_ecosystem_state_sha256":"b"*64,"authority_transfer":False}
+        if segment is not None: request["organization_receipt_segment"]=segment
         with tempfile.TemporaryDirectory() as td:
             ingress=Path(td)/"in.json"
             ingress.write_text(json.dumps({"destination":{"org":"master-records","service":service},"payload":{"request":request}}))
@@ -47,6 +53,20 @@ class TestEcosystemTransitionIntake(unittest.TestCase):
                 matches=[s for s in registry["services"] if service in [s["service_id"],*s.get("legacy_service_ids",[])]]
                 self.assertEqual([s["service_id"] for s in matches],["organization.ecosystem-transition-ledger"])
                 self.assertEqual(matches[0]["endpoint_adapter"],"resident-runtime/ecosystem_transition_intake.py")
+
+    def test_release_predecessor_is_verified_receipt_chain_segment(self):
+        first=org_receipt(n=1); second=org_receipt(first["receipt_sha256"],n=2); head=org_receipt(second["receipt_sha256"],n=3)
+        result=self.run_ingress("ORGANIZATION_RECORD_ORGANIZATION_TRANSITION",receipt=head,segment=[first,second])
+        self.assertEqual(result["release_predecessor"],{"organization":"master-records","segment_length":3,
+            "segment_head_sha256":head["receipt_sha256"],"segment_base_previous_receipt_sha256":None})
+        with self.assertRaisesRegex(RuntimeError,"linkage broken"):
+            self.run_ingress("ORGANIZATION_RECORD_ORGANIZATION_TRANSITION",receipt=head,segment=[first])
+        with self.assertRaisesRegex(RuntimeError,"owner mismatch"):
+            self.run_ingress("ORGANIZATION_RECORD_ORGANIZATION_TRANSITION",receipt=org_receipt(first["receipt_sha256"],"Triad-Test"),segment=[first])
+        with self.assertRaisesRegex(RuntimeError,"hash mismatch"):
+            self.run_ingress("ORGANIZATION_RECORD_ORGANIZATION_TRANSITION",receipt=dict(head,repo_transition_id="forged"))
+        with self.assertRaisesRegex(RuntimeError,"schema mismatch"):
+            self.run_ingress("ORGANIZATION_RECORD_ORGANIZATION_TRANSITION",receipt={"schema":"x"})
 
     def test_publisher_emits_new_values_only(self):
         with tempfile.TemporaryDirectory() as td:

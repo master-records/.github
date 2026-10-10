@@ -40,6 +40,7 @@ LEGACY_MASTER_RECORDS_CUSTODY={
     "authority_effect":"NONE_CUSTODY_ONLY",
 }
 MANIFEST_BINDING=("experiment_id","run_id","artifact_set_sha256","organization_ledger_root_hash")
+RECONSTRUCTION_RECEIPT="STEGVERSE_002_SELF_CHARACTERIZATION_RECONSTRUCTION_RECEIPT.json"
 
 def canon(v:Any)->bytes:
     return json.dumps(v,sort_keys=True,separators=(",",":"),ensure_ascii=False,allow_nan=False).encode()
@@ -77,7 +78,7 @@ def resolve_orchestration()->Path:
             return root
     raise RuntimeError("master-records/orchestration source not materialized")
 
-def materialize_artifacts(request:dict[str,Any])->tuple[Path,str,str]:
+def verify_artifacts(request:dict[str,Any])->tuple[dict[str,bytes],list[dict[str,Any]],str,str]:
     if request.get("experiment_id")!=EXPERIMENT_ID: raise RuntimeError("experiment_id mismatch")
     run_id=str(request.get("run_id") or "")
     if not run_id.startswith("SV002-RUN-"): raise RuntimeError("run_id invalid")
@@ -109,16 +110,10 @@ def materialize_artifacts(request:dict[str,Any])->tuple[Path,str,str]:
         raise RuntimeError("run_id artifact binding mismatch")
     if org_root.get("root_hash")!=request.get("organization_ledger_root_hash"):
         raise RuntimeError("organization ledger root handoff binding mismatch")
-    root=organization_record_base()/run_id/"artifact-root"
-    root.mkdir(parents=True,exist_ok=True)
-    for name,raw in decoded.items():
-        target=root/name
-        if target.exists():
-            if target.read_bytes()!=raw: raise RuntimeError(f"organization record write-once collision:{name}")
-        else:
-            tmp=target.with_suffix(target.suffix+".tmp")
-            tmp.write_bytes(raw); tmp.replace(target)
-    manifest={
+    return decoded,meta,artifact_set_sha256,run_id
+
+def build_manifest(request:dict[str,Any],meta:list[dict[str,Any]],artifact_set_sha256:str,run_id:str)->dict[str,Any]:
+    return {
         "schema":MANIFEST_SCHEMA,
         "experiment_id":EXPERIMENT_ID,
         "run_id":run_id,
@@ -128,6 +123,26 @@ def materialize_artifacts(request:dict[str,Any])->tuple[Path,str,str]:
         "artifacts":meta,
         "authority_effect":AUTHORITY_EFFECT,
     }
+
+def materialize_workspace(workspace:Path,decoded:dict[str,bytes],manifest:dict[str,Any])->Path:
+    """Write the artifact set into an ephemeral verification workspace.
+
+    The artifact bytes stay in the custody of the Organization that produced them;
+    Master Records keeps only the manifest and the reconstruction receipt.
+    """
+    workspace.mkdir(parents=True,exist_ok=True)
+    for name,raw in decoded.items(): (workspace/name).write_bytes(raw)
+    (workspace/ORGANIZATION_RECORD_MANIFEST).write_text(json.dumps(manifest,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+    return workspace
+
+def record_root(run_id:str)->Path:
+    # Directory name kept so records written before artifact bytes stopped being
+    # retained stay at the same path; it now holds the manifest and receipt only.
+    return organization_record_base()/run_id/"artifact-root"
+
+def write_record(manifest:dict[str,Any],reconstruction:dict[str,Any]|None=None)->Path:
+    root=record_root(manifest["run_id"])
+    root.mkdir(parents=True,exist_ok=True)
     legacy_path=root/LEGACY_MASTER_RECORDS_CUSTODY["manifest"]
     if legacy_path.exists():
         legacy=load(legacy_path)
@@ -139,7 +154,9 @@ def materialize_artifacts(request:dict[str,Any])->tuple[Path,str,str]:
             and load(manifest_path)!=legacy_manifest(manifest):
         raise RuntimeError("organization record manifest write-once collision")
     if not manifest_path.exists(): manifest_path.write_text(raw_manifest,encoding="utf-8")
-    return root,artifact_set_sha256,run_id
+    if reconstruction is not None:
+        (root/RECONSTRUCTION_RECEIPT).write_text(json.dumps(reconstruction,indent=2,sort_keys=True)+"\n",encoding="utf-8")
+    return root
 
 def legacy_manifest(manifest:dict[str,Any])->dict[str,Any]:
     """The same manifest as written under the pre-rename schema and authority effect."""
@@ -154,7 +171,7 @@ def read_manifest(root:Path)->dict[str,Any]:
 def reconstruct(root:Path)->dict[str,Any]:
     orchestration=resolve_orchestration()
     verifier=orchestration/"scripts/verify_sv002_self_characterization_reconstruction.py"
-    output=root/"STEGVERSE_002_SELF_CHARACTERIZATION_RECONSTRUCTION_RECEIPT.json"
+    output=root/RECONSTRUCTION_RECEIPT
     env={"PATH":os.environ.get("PATH",""),"HOME":os.environ.get("HOME",str(Path.home()))}
     done=subprocess.run(
         ["python3",str(verifier),str(root),"--output",str(output)],
@@ -175,8 +192,11 @@ def run(ingress:Path)->dict[str,Any]:
     request=payload.get("request") if isinstance(payload.get("request"),dict) else payload
     if request.get("operation") not in (OPERATION,LEGACY_MASTER_RECORDS_CUSTODY["operation"]): raise RuntimeError("operation mismatch")
     if request.get("authority_transfer") is not False: raise RuntimeError("authority transfer prohibited")
-    root,artifact_set_sha256,run_id=materialize_artifacts(request)
-    reconstruction=reconstruct(root)
+    decoded,meta,artifact_set_sha256,run_id=verify_artifacts(request)
+    manifest=build_manifest(request,meta,artifact_set_sha256,run_id)
+    with tempfile.TemporaryDirectory() as td:
+        reconstruction=reconstruct(materialize_workspace(Path(td)/"artifact-root",decoded,manifest))
+    root=write_record(manifest,reconstruction)
     return {
         "schema":INTAKE_SCHEMA,
         "state":"RECORDED_AND_RECONSTRUCTED",
@@ -184,9 +204,11 @@ def run(ingress:Path)->dict[str,Any]:
         "run_id":run_id,
         "artifact_set_sha256":artifact_set_sha256,
         "record_root":str(root),
-        "reconstruction_receipt_path":str(root/"STEGVERSE_002_SELF_CHARACTERIZATION_RECONSTRUCTION_RECEIPT.json"),
+        "reconstruction_receipt_path":str(root/RECONSTRUCTION_RECEIPT),
         "reconstruction_receipt":reconstruction,
         "master_records_organization_record_established":True,
+        "artifact_bytes_retained":False,
+        "evidence_custody":"ORIGINATING_ORGANIZATION",
         "authority_transfer":False,
         "authority_effect":AUTHORITY_EFFECT,
     }

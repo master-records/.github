@@ -1,0 +1,554 @@
+{
+  "schema": "master-records.role-audit/v1",
+  "repository": "master-records/.github",
+  "audited_base_commit": "033597a54adf78cb388a11eeb8383cc9cb8b5886",
+  "tracking": "StegVerse-org/LLM-adapter#368",
+  "canonical_role_source": "StegVerse-org/.github docs/ORGANIZATION_ROLE_RUNTIME_REALITY_DEPLOYMENT.md (master-records restated)",
+  "canonical_role": "Recorder of released organization batch receipts for cross-organization reconstruction. Release predecessor: a verified organization receipt-chain segment. Cannot create, admit, authorize, infer or repair a transition; never held transition authority; not the runtime-reality authority and not a gate on any organization's runtime reality; custody and durable history stay with each Organization; nothing awaits it.",
+  "counts": {
+    "by_classification": {
+      "HISTORICAL_EVIDENCE": 4,
+      "IMPROPER_CODE": 6,
+      "IMPROPER_DOC": 18,
+      "NAMING_ONLY": 7,
+      "PROPER": 28
+    },
+    "by_remediation_status": {
+      "NOT_APPLICABLE": 39,
+      "NOT_REMEDIATED_CROSS_REPOSITORY_CONTRACT": 1,
+      "REMEDIATED": 23
+    },
+    "total": 63
+  },
+  "statements": [
+    {
+      "file": "README.md",
+      "line_at_base": 3,
+      "statement": "Existing ingress/egress and execution authority remains defined by MASTER_RECORDS_ORG_BOUNDARY_MIRROR_HANDOFF.md.",
+      "classification": "IMPROPER_DOC",
+      "reason": "Ascribes execution authority to Master Records. The handoff itself grants none: it says GitHub runtime is not execution authority and that HB carriers grant no execution authority.",
+      "remediation_status": "REMEDIATED",
+      "remediation": "Replaced with the canonical role statement; the handoff is now cited only for the organization's own Interlock/InTr transport, which carries no execution or transition authority."
+    },
+    {
+      "file": "README.md",
+      "line_at_base": 3,
+      "statement": "Source-owned root-license inventory sentence (5 repositories, no release authorization implied).",
+      "classification": "PROPER",
+      "reason": "License inventory pointer; claims no authority.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "ORG_DESCRIPTION.md",
+      "line_at_base": 3,
+      "statement": "Organization records, orchestration, monitoring, and reconstruction surfaces for StegVerse transition records, including end-of-life records.",
+      "classification": "IMPROPER_DOC",
+      "reason": "Presents Master Records as orchestrating and monitoring StegVerse transition records, which implies coordination and runtime-observation authority.",
+      "remediation_status": "REMEDIATED",
+      "remediation": "Rewritten to the canonical recorder role."
+    },
+    {
+      "file": "profile/README.md",
+      "line_at_base": 3,
+      "statement": "master-records is the StegVerse organization for organization records and their reconstruction.",
+      "classification": "IMPROPER_DOC",
+      "reason": "Does not state the released-batch-receipt recorder role; reads as the holder of organization records.",
+      "remediation_status": "REMEDIATED",
+      "remediation": "Rewritten to the canonical role."
+    },
+    {
+      "file": "profile/README.md",
+      "line_at_base": 5,
+      "statement": "It holds the systems that monitor, orchestrate, and keep the organization records needed to reconstruct what happened across governed work.",
+      "classification": "IMPROPER_DOC",
+      "reason": "Monitoring, orchestrating and keeping records across governed work imply runtime-reality status and custody of durable history.",
+      "remediation_status": "REMEDIATED",
+      "remediation": "Replaced with: an Organization may release a batch receipt (predecessor: a verified receipt-chain segment); custody and durable history stay with each Organization."
+    },
+    {
+      "file": "profile/README.md",
+      "line_at_base": 11,
+      "statement": "monitoring — ecosystem-level observation and status surfaces",
+      "classification": "IMPROPER_DOC",
+      "reason": "Ecosystem-level status surfaces amount to a runtime-reality authority claim.",
+      "remediation_status": "REMEDIATED",
+      "remediation": "Narrowed to observation of Master Records' own recording surfaces."
+    },
+    {
+      "file": "profile/README.md",
+      "line_at_base": 12,
+      "statement": "orchestration — durable coordination and record-binding paths",
+      "classification": "IMPROPER_DOC",
+      "reason": "'Durable coordination' implies Master Records coordinates organizations or holds durable history.",
+      "remediation_status": "REMEDIATED",
+      "remediation": "Narrowed to recording released batch receipts plus the reconstruction verifiers."
+    },
+    {
+      "file": "profile/README.md",
+      "line_at_base": 13,
+      "statement": "telemetry — operational evidence streams",
+      "classification": "IMPROPER_DOC",
+      "reason": "Ambiguous: could be read as custody of organizations' evidence streams.",
+      "remediation_status": "REMEDIATED",
+      "remediation": "Narrowed to Master Records' own operational telemetry."
+    },
+    {
+      "file": "profile/README.md",
+      "line_at_base": 14,
+      "statement": "core-lite — bounded supporting control logic",
+      "classification": "IMPROPER_DOC",
+      "reason": "'Control logic' without scope can be read as control over other organizations.",
+      "remediation_status": "REMEDIATED",
+      "remediation": "Narrowed to supporting logic internal to Master Records."
+    },
+    {
+      "file": "profile/README.md",
+      "line_at_base": 18,
+      "statement": "Master Records holds organization records, including end-of-life transition records, with the provenance, receipts, state relationships, and reconstruction paths needed to reconstruct them.",
+      "classification": "IMPROPER_DOC",
+      "reason": "Holding records with state relationships reads as holding durable history and transition state; the release predecessor is not stated.",
+      "remediation_status": "REMEDIATED",
+      "remediation": "Rewritten: records released organization batch receipts; release predecessor is a verified segment; custody and durable history stay with the Organization; added the non-authority / non-gate / nothing-awaits statement."
+    },
+    {
+      "file": "profile/README.md",
+      "line_at_base": 20,
+      "statement": "Recording a transition does not authorize it. Admission, gates, closure, and prerequisites belong to Interlock/InTr, and ledger roles belong to the organization transition ledger.",
+      "classification": "PROPER",
+      "reason": "Already disclaims gate and prerequisite roles. Kept, with 'released receipt' wording.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "MASTER_RECORDS_ORG_BOUNDARY_MIRROR_HANDOFF.md",
+      "line_at_base": 6,
+      "statement": "Goal: Establish master-records/.github as the canonical organizational ingress/egress definition for master-records.",
+      "classification": "PROPER",
+      "reason": "Scoped to the master-records organization's own boundary, the universal pattern every org .github carries. Grants nothing over other organizations. A restatement section now precedes it.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "MASTER_RECORDS_ORG_BOUNDARY_MIRROR_HANDOFF.md",
+      "line_at_base": 9,
+      "statement": "Current task authority items 1-5 (InTr envelopes at this boundary; HB carriers grant no authority; GitHub runtime is not execution authority).",
+      "classification": "PROPER",
+      "reason": "Transport semantics for its own boundary, with explicit non-authority statements.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "MASTER_RECORDS_ORG_BOUNDARY_MIRROR_HANDOFF.md",
+      "line_at_base": 39,
+      "statement": "Machine-execution update — 2026-08-31 (status lines, local deterministic pass, transition authority effect NONE).",
+      "classification": "HISTORICAL_EVIDENCE",
+      "reason": "Dated execution status record. Not edited.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "MASTER_RECORDS_ORG_BOUNDARY_MIRROR_HANDOFF.md",
+      "line_at_base": 54,
+      "statement": "Canonical resident-runtime activation rule — the organization .github owns activation, ingress, egress, and organization-crossing transport behavior.",
+      "classification": "PROPER",
+      "reason": "Own-organization transport and activation, which is the universal org pattern. It explicitly says authority comes from the applicable transition elements and that carrier presence is non-authorizing.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "MASTER_RECORDS_ORG_BOUNDARY_MIRROR_HANDOFF.md",
+      "line_at_base": 83,
+      "statement": "Master Records = organization records of those roots, used for reconstruction",
+      "classification": "IMPROPER_DOC",
+      "reason": "Places Master Records as a layer recording ecosystem-ledger roots, i.e. a ledger layer above the organizations.",
+      "remediation_status": "REMEDIATED",
+      "remediation": "Rewritten: recorder of released organization batch receipts (predecessor: a verified segment); not a ledger layer, not a gate, awaited by no organization."
+    },
+    {
+      "file": "MASTER_RECORDS_ORG_BOUNDARY_MIRROR_HANDOFF.md",
+      "line_at_base": 88,
+      "statement": "Authority effect remains NONE ... does not grant runtime, activation, deployment, release, custody, credential, or admissibility authority.",
+      "classification": "PROPER",
+      "reason": "Explicit non-authority statement.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "MASTER_RECORDS_ORG_BOUNDARY_MIRROR_HANDOFF.md",
+      "line_at_base": 90,
+      "statement": "Current implementation state (INSTALLED_ON_FEATURE_BRANCH / NOT YET OBSERVED lines).",
+      "classification": "HISTORICAL_EVIDENCE",
+      "reason": "Dated status record. Not edited.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "MASTER_RECORDS_ORG_BOUNDARY_MIRROR_HANDOFF.md",
+      "line_at_base": 101,
+      "statement": "2026-09-26 open-source audit: 'Preserve all existing organization boundary and runtime authority.'",
+      "classification": "IMPROPER_DOC",
+      "reason": "Implies Master Records holds runtime authority that must be preserved.",
+      "remediation_status": "REMEDIATED",
+      "remediation": "Changed to: 'Preserve the existing organization boundary, which confers no runtime authority.' The rest of the dated audit text is unchanged."
+    },
+    {
+      "file": "HB_MACHINE_CONTINUATION_ORG_PROFILE_MIRROR_HANDOFF.md",
+      "line_at_base": 19,
+      "statement": "Shared HB continuation knowledge; creates no second heartbeat, scheduler, credential plane or runtime claim; HB custody NONE.",
+      "classification": "PROPER",
+      "reason": "Non-authorizing shared knowledge.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "ORG_RESIDENT_RUNTIME_INTR_BOUNDARY_MIRROR_HANDOFF.md",
+      "line_at_base": 9,
+      "statement": "This .github owns organization resident-runtime activation source and the mechanism generating all organization ingress/egress communication.",
+      "classification": "PROPER",
+      "reason": "Own-organization boundary only. The same file says the tool cannot self-grant authority.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "docs/ORGANIZATION_RESIDENT_RUNTIME_MIRROR_HANDOFF.md",
+      "line_at_base": 6,
+      "statement": "All master-records resident-runtime activation declarations and organization-boundary ingress/egress mechanisms are owned by this .github repository.",
+      "classification": "PROPER",
+      "reason": "Own-organization boundary; grants no execution, routing, transition or receiving authority.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "docs/ORGANIZATION_TRANSITION_LEDGER_MIRROR_HANDOFF.md",
+      "line_at_base": 12,
+      "statement": "Only the organization receipt and evidence required for ecosystem reconstruction propagate to master-records/.github.",
+      "classification": "IMPROPER_DOC",
+      "reason": "Implies evidence moves into Master Records (custody) and frames that move as a required propagation.",
+      "remediation_status": "REMEDIATED",
+      "remediation": "Rewritten: the organization may release an organization batch receipt whose predecessor is a verified segment; evidence and durable history stay with the organization; nothing awaits Master Records."
+    },
+    {
+      "file": "docs/ORGANIZATION_TRANSITION_LEDGER_MIRROR_HANDOFF.md",
+      "line_at_base": 5,
+      "statement": "Repository-level transitions remain owned and replayable in their originating repositories ...",
+      "classification": "PROPER",
+      "reason": "Own-organization ledger rollup.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "docs/TRANSITION_LEDGER_MIRROR_HANDOFF.md",
+      "line_at_base": 11,
+      "statement": "Only evidence needed for organization reconstruction propagates to master-records/.github.",
+      "classification": "NAMING_ONLY",
+      "reason": "Here master-records/.github is this organization's own .github (the repo-to-org step), not Master Records acting as recorder for other orgs.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "docs/ORG_TO_MASTER_RECORDS_TRANSITION_HANDOFF.md",
+      "line_at_base": 5,
+      "statement": "After a repository transition is verified and rolled into the organization ledger, the exact organization-transition-receipt may be submitted to Master Records as an organization record.",
+      "classification": "IMPROPER_DOC",
+      "reason": "Does not require a verified organization receipt-chain segment as the release predecessor, and the intake accepted unverified receipts.",
+      "remediation_status": "REMEDIATED",
+      "remediation": "Rewritten to segment-release semantics, which the intake now enforces. States that Master Records is not a gate and is not awaited."
+    },
+    {
+      "file": "docs/ORG_TO_MASTER_RECORDS_TRANSITION_HANDOFF.md",
+      "line_at_base": 11,
+      "statement": "Route ... -> organization.ecosystem-transition-ledger -> master-records/orchestration",
+      "classification": "IMPROPER_DOC",
+      "reason": "Reads as Master Records hosting the ecosystem layer of the transition ledger.",
+      "remediation_status": "REMEDIATED",
+      "remediation": "Added a clarification: the service id is an identifier only, and Master Records holds no ecosystem ledger layer or transition authority."
+    },
+    {
+      "file": "docs/ORG_TO_MASTER_RECORDS_TRANSITION_HANDOFF.md",
+      "line_at_base": 13,
+      "statement": "Operation/receipt identifiers and pre-rename names accepted on read (MASTER-RECORDS-BULK-SEMANTIC-REMEDIATION-002).",
+      "classification": "NAMING_ONLY",
+      "reason": "Identifier compatibility only.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "docs/ORG_TO_MASTER_RECORDS_TRANSITION_HANDOFF.md",
+      "line_at_base": 15,
+      "statement": "Transport and recording do not create source authority. Replay stays with the repo/org layers ...",
+      "classification": "PROPER",
+      "reason": "Non-authority statement.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "docs/ORG_TO_MASTER_RECORDS_TRANSITION_HANDOFF.md",
+      "line_at_base": 34,
+      "statement": "-> write-once Master Records organization record root (SV002 artifacts materialized under the Master Records state domain)",
+      "classification": "IMPROPER_DOC",
+      "reason": "Master Records kept a durable copy of StegVerse-002's evidence artifacts, i.e. custody.",
+      "remediation_status": "REMEDIATED",
+      "remediation": "Route and text updated: artifacts go to an ephemeral verification workspace only; Master Records keeps the manifest and reconstruction receipt."
+    },
+    {
+      "file": "docs/ORG_TO_MASTER_RECORDS_TRANSITION_HANDOFF.md",
+      "line_at_base": 41,
+      "statement": "A successful response requires deterministic reconstruction PASS.",
+      "classification": "PROPER",
+      "reason": "Applies to Master Records' own record only. Text now says the response gates nothing and StegVerse-002 does not await it.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "org-boundary/HIERARCHICAL_LEDGER_STANDARD.md",
+      "line_at_base": 17,
+      "statement": "Master Records = organization records of the covered roots, used for reconstruction",
+      "classification": "IMPROPER_DOC",
+      "reason": "Places Master Records in the ledger hierarchy above the ecosystem layer.",
+      "remediation_status": "REMEDIATED",
+      "remediation": "Rewritten: recorder of released organization batch receipts; not a ledger layer."
+    },
+    {
+      "file": "org-boundary/HIERARCHICAL_LEDGER_STANDARD.md",
+      "line_at_base": 103,
+      "statement": "Master Records holds the organization records for those roots and uses them for reconstruction",
+      "classification": "IMPROPER_DOC",
+      "reason": "Ties Master Records to the ecosystem layer's roots.",
+      "remediation_status": "REMEDIATED",
+      "remediation": "Rewritten: Master Records is not this layer; canonical role and non-authority statements added."
+    },
+    {
+      "file": "org-boundary/HIERARCHICAL_LEDGER_STANDARD.md",
+      "line_at_base": 267,
+      "statement": "ecosystem-level ledger/root -> master-records/orchestration organization record and reconstruction surfaces",
+      "classification": "IMPROPER_DOC",
+      "reason": "Maps the ecosystem ledger root onto Master Records.",
+      "remediation_status": "REMEDIATED",
+      "remediation": "Remapped to the ecosystem layer of the organization transition ledger (not Master Records); added a separate line for released batch receipts going to the record-only recorder."
+    },
+    {
+      "file": "org-boundary/HIERARCHICAL_LEDGER_STANDARD.md",
+      "line_at_base": 248,
+      "statement": "receipt != authority; coverage != custody acceptance; custody != execution; reconstruction != activation",
+      "classification": "PROPER",
+      "reason": "Non-authority invariants.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "org-boundary/README.md",
+      "line_at_base": 3,
+      "statement": "master-records/.github is the canonical specification and bootstrap home for the master-records organizational ingress/egress boundary.",
+      "classification": "PROPER",
+      "reason": "Own boundary; grants no custody or execution authority.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "org-kernel/README.md",
+      "line_at_base": 5,
+      "statement": "Universal kernel vendored identically into every organization .github.",
+      "classification": "PROPER",
+      "reason": "Organization-neutral kernel; carrier grants no authority.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "resident-runtime/README.md",
+      "line_at_base": 3,
+      "statement": "This directory is the only canonical home for organization resident-runtime activation metadata and entrypoints.",
+      "classification": "PROPER",
+      "reason": "Own organization only.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "stegverse.architecture.json",
+      "line_at_base": 5,
+      "statement": "purpose: Canonical master-records organizational ingress/egress boundary definition",
+      "classification": "PROPER",
+      "reason": "Own boundary.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "control/organization-runtime.json",
+      "line_at_base": 5,
+      "statement": "state SOURCE_CONFIGURED_RUNTIME_NOT_CLAIMED; authority_effect NONE_SOURCE_ONLY",
+      "classification": "PROPER",
+      "reason": "Makes no runtime claim.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "org-runtime/activation.json",
+      "line_at_base": 6,
+      "statement": "runtime_execution_surface SOVEREIGN_RESIDENT_PROCESS; activation_state SOURCE_INSTALLED_RUNTIME_NOT_PROVEN",
+      "classification": "PROPER",
+      "reason": "Own-organization resident process; authority is derived from transition elements, not self-granted.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "org-runtime/interlock-intr.json",
+      "line_at_base": 5,
+      "statement": "ALL_ORGANIZATION_INGRESS_EGRESS_GENERATED_AT_ORG_DOT_GITHUB_BOUNDARY",
+      "classification": "PROPER",
+      "reason": "Own-organization transport.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "resident-runtime/activation-manifest.json",
+      "line_at_base": 5,
+      "statement": "activation_owner / ingress_egress_owner master-records/.github",
+      "classification": "PROPER",
+      "reason": "Own-organization runtime metadata; GitHub Actions and HB grant no authority.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": ".stegverse/transition-ledger/contract.json",
+      "line_at_base": 19,
+      "statement": "propagation_rule PROPAGATE_ONLY_EVIDENCE_NEEDED_BY_NEXT_HIGHER_LEVEL",
+      "classification": "PROPER",
+      "reason": "Repo-to-own-org propagation.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": ".stegverse/transition-ledger/org-contract.json",
+      "line_at_base": 10,
+      "statement": "propagation_target: master-records/.github",
+      "classification": "IMPROPER_CODE",
+      "reason": "Without qualification, reads as a required evidence propagation into Master Records.",
+      "remediation_status": "REMEDIATED",
+      "remediation": "Key kept for compatibility. Added propagation_semantics OPTIONAL_RELEASE_OF_ORGANIZATION_BATCH_RECEIPT_FOR_CROSS_ORGANIZATION_RECONSTRUCTION, release_predecessor VERIFIED_ORGANIZATION_RECEIPT_CHAIN_SEGMENT, evidence_custody ORIGINATING_ORGANIZATION, awaits_master_records false."
+    },
+    {
+      "file": "org-boundary/registry/services.json",
+      "line_at_base": 32,
+      "statement": "service organization.ecosystem-transition-ledger (master-records/orchestration) accepting ORGANIZATION_RECORD_ORGANIZATION_TRANSITION",
+      "classification": "IMPROPER_CODE",
+      "reason": "Registry entry declared no role limits. It reads as Master Records hosting the ecosystem transition ledger.",
+      "remediation_status": "REMEDIATED",
+      "remediation": "Added record_role RECORDER_OF_RELEASED_ORGANIZATION_BATCH_RECEIPTS, release_predecessor, evidence_custody ORIGINATING_ORGANIZATION, transition_authority NONE, runtime_reality_authority false, gates_organizations false. Service id unchanged so existing routes keep working."
+    },
+    {
+      "file": "org-boundary/registry/services.json",
+      "line_at_base": 69,
+      "statement": "service master-records.sv002-self-characterization-reconstruction",
+      "classification": "IMPROPER_CODE",
+      "reason": "Registry entry declared no custody or authority limits.",
+      "remediation_status": "REMEDIATED",
+      "remediation": "Same role-limit fields added."
+    },
+    {
+      "file": "org-boundary/registry/services.json",
+      "line_at_base": 81,
+      "statement": "boundary_rule: Cross-organization ingress/egress semantics are defined by the organization boundary; endpoint authority remains transition-governed.",
+      "classification": "PROPER",
+      "reason": "Extended with the canonical role sentence.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "org-boundary/registry/services.json",
+      "line_at_base": 11,
+      "statement": "master-records.org-control accepts ecosystem.communication / ecosystem.monitor.request / ecosystem.work.request",
+      "classification": "NAMING_ONLY",
+      "reason": "Message classes of the universal vendored kernel that every org-control accepts; they confer no monitoring authority over other organizations.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "resident-runtime/ecosystem_transition_intake.py",
+      "line_at_base": 44,
+      "statement": "org_receipt=request.get('organization_receipt'); accepted any dict as the recorded predecessor",
+      "classification": "IMPROPER_CODE",
+      "reason": "The release predecessor was not verified as an organization receipt-chain segment.",
+      "remediation_status": "REMEDIATED",
+      "remediation": "Added verify_release_predecessor: checks schema, receipt_sha256 self-binding, single organization, and previous_receipt_sha256 linkage across the optional organization_receipt_segment. Anything else is blocked. The result reports release_predecessor. Tests added."
+    },
+    {
+      "file": "resident-runtime/ecosystem_transition_intake.py",
+      "line_at_base": 46,
+      "statement": "requires predecessor_ecosystem_state_sha256 / successor_ecosystem_state_sha256 and invokes master-records/orchestration services/ecosystem_transition_ledger.py",
+      "classification": "IMPROPER_CODE",
+      "reason": "Master Records keeps ecosystem-state transitions, which is the ecosystem-ledger / runtime-reality role it does not hold.",
+      "remediation_status": "NOT_REMEDIATED_CROSS_REPOSITORY_CONTRACT",
+      "remediation": "Not changed here. The arguments are the CLI contract of master-records/orchestration services/ecosystem_transition_ledger.py, which is outside this repository. Removing them from this side alone would break recording. It needs a coordinated change in master-records/orchestration that drops the ecosystem-state arguments and records the released receipt only."
+    },
+    {
+      "file": "resident-runtime/submit_org_transition_to_master_records.py",
+      "line_at_base": 13,
+      "statement": "master-records' own organization publishes its organization receipt for record",
+      "classification": "PROPER",
+      "reason": "Own-organization release with authority_transfer false. The intake now verifies it.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "resident-runtime/sv002_self_characterization_intake.py",
+      "line_at_base": 112,
+      "statement": "materialize_artifacts wrote the full StegVerse-002 artifact bytes into a durable write-once Master Records root",
+      "classification": "IMPROPER_CODE",
+      "reason": "Custody of another organization's evidence.",
+      "remediation_status": "REMEDIATED",
+      "remediation": "Artifacts are now verified and materialized only in an ephemeral workspace for the orchestration verifier. The durable record holds the manifest and the reconstruction receipt; nothing is recorded unless reconstruction passes. The result carries artifact_bytes_retained false and evidence_custody ORIGINATING_ORGANIZATION. Tests updated."
+    },
+    {
+      "file": "resident-runtime/sv002_self_characterization_intake.py",
+      "line_at_base": 35,
+      "statement": "LEGACY_MASTER_RECORDS_CUSTODY identifiers (CUSTODY_* operation, custody manifest/env names)",
+      "classification": "NAMING_ONLY",
+      "reason": "Read-only compatibility with pre-rename records; never written.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "resident-runtime/aggregate_repo_transition.py",
+      "line_at_base": 23,
+      "statement": "Organization rollup of own repo receipts into the master-records org chain",
+      "classification": "PROPER",
+      "reason": "Own-organization ledger.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "resident-runtime/ecosystem_control.py",
+      "line_at_base": 15,
+      "statement": "send-monitor / send-work / send-message ecosystem broadcast commands",
+      "classification": "NAMING_ONLY",
+      "reason": "Universal kernel messaging that every organization carries. Gives no authority over recipients; requests are fail-closed at the receiver.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "resident-runtime/federation_gateway_transport.py",
+      "line_at_base": 94,
+      "statement": "gateway_execution_authority NONE",
+      "classification": "PROPER",
+      "reason": "Explicit non-authority.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "org-boundary/registry/federation.json",
+      "line_at_base": 105,
+      "statement": "14-organization federation directory, authority_effect NONE",
+      "classification": "NAMING_ONLY",
+      "reason": "Address directory only.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "org-boundary/fixtures/cross-org-ingress.json",
+      "line_at_base": 2,
+      "statement": "Triad-Test -> master-records boundary diagnostic packet",
+      "classification": "HISTORICAL_EVIDENCE",
+      "reason": "Fixture bound to the recorded 2026-08-31 local execution. Not edited.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "docs/OPEN_SOURCE_ORGANIZATION_INVENTORY_20260926.json",
+      "line_at_base": 1,
+      "statement": "Bounded source-owned open-source inventory 2026-09-26",
+      "classification": "HISTORICAL_EVIDENCE",
+      "reason": "Dated audit record. Not edited.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": ".github/workflows/org-boundary-execution.yml",
+      "line_at_base": 28,
+      "statement": "Runs boundary and intake unit tests; uploads diagnostic evidence artifact",
+      "classification": "PROPER",
+      "reason": "Validation only.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": ".github/workflows/org-runtime-boundary.yml",
+      "line_at_base": 25,
+      "statement": "Validates boundary contract asserts authority_effect NONE_VALIDATION_ONLY",
+      "classification": "PROPER",
+      "reason": "Validation only.",
+      "remediation_status": "NOT_APPLICABLE"
+    },
+    {
+      "file": "org-boundary/schemas/*.json, org-boundary/evidence/receipt-chain.schema.json",
+      "line_at_base": 3,
+      "statement": "$id https://master-records.stegverse.org/... schema identifiers",
+      "classification": "NAMING_ONLY",
+      "reason": "Schema namespace identifiers.",
+      "remediation_status": "NOT_APPLICABLE"
+    }
+  ],
+  "authority_effect": "NONE_AUDIT_ONLY"
+}

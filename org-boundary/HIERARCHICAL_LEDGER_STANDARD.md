@@ -14,7 +14,7 @@ The governing model is:
 repository ledger = granular event history for one repository
 organization ledger = authoritative coverage of repositories beneath one organization
 organization transition ledger (ecosystem layer) = canonical ecosystem coverage of organization ledgers plus ecosystem-native transitions
-Master Records = organization records of the covered roots, used for reconstruction
+Master Records = recorder of released organization batch receipts, used for cross-organization reconstruction; not a ledger layer
 ```
 
 Coverage means ordered, integrity-bound, reconstructable inclusion. Coverage does not require payload duplication.
@@ -100,7 +100,7 @@ It contains:
 3. cross-organization transitions;
 4. reconstruction references for the roots it accepts.
 
-Master Records holds the organization records for those roots and uses them for reconstruction; custody of the underlying evidence stays with the Organization.
+Master Records is not this layer. It records released organization batch receipts, each with a verified organization receipt-chain segment as release predecessor, for cross-organization reconstruction. It cannot create, admit, authorize, infer or repair a transition, is not the runtime-reality authority, and gates nothing; custody and durable history of the underlying evidence stay with each Organization.
 
 Ecosystem-layer coverage does not mean central ingestion of every repository event. It means that every accepted ecosystem-level claim has a deterministic evidence path:
 
@@ -265,7 +265,10 @@ organization-level ledger/root
   -> <org>/.github organizational boundary and aggregation surfaces
 
 ecosystem-level ledger/root
-  -> master-records/orchestration organization record and reconstruction surfaces
+  -> ecosystem layer of the organization transition ledger (not Master Records)
+
+released organization batch receipts
+  -> master-records/orchestration recorder and reconstruction verifiers (record-only; nothing awaits it)
 ```
 
 ## Required validation
