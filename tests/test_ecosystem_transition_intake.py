@@ -36,7 +36,7 @@ class TestEcosystemTransitionIntake(unittest.TestCase):
                      "authority_transfer":False}
             ingress.write_text(json.dumps({"destination":{"org":"master-records",
                 "service":intake.DESTINATION_SERVICE},"payload":{"request":request}}))
-            done=subprocess.CompletedProcess([],0,stdout=json.dumps({"receipt":"r"})+"\\n",stderr="")
+            done=subprocess.CompletedProcess([],0,stdout=json.dumps({"receipt":"r"})+"\n",stderr="")
             with mock.patch.object(intake,"resolve_orchestration",return_value=Path(td)), \
                  mock.patch.object(intake.subprocess,"run",return_value=done) as called:
                 result=intake.run(ingress)
