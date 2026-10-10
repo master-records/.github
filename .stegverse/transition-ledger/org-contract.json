@@ -8,5 +8,9 @@
   "preserves_repo_receipt": true,
   "append_only_receipts": true,
   "propagation_target": "master-records/.github",
+  "propagation_semantics": "OPTIONAL_RELEASE_OF_ORGANIZATION_BATCH_RECEIPT_FOR_CROSS_ORGANIZATION_RECONSTRUCTION",
+  "release_predecessor": "VERIFIED_ORGANIZATION_RECEIPT_CHAIN_SEGMENT",
+  "evidence_custody": "ORIGINATING_ORGANIZATION",
+  "awaits_master_records": false,
   "authority_effect": "NONE_CONTRACT_ONLY"
 }

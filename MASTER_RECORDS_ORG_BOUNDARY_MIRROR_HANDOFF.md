@@ -3,6 +3,11 @@
 Status: ACTIVE
 Updated: 2026-09-01
 
+## Master Records role — restated 2026-10-10 (Refs StegVerse-org/LLM-adapter#368)
+Master Records is the recorder of released organization batch receipts for cross-organization reconstruction. Its release predecessor is a verified organization receipt-chain segment. It cannot create, admit, authorize, infer or repair a transition and never held transition authority; it is not the runtime-reality authority and not a gate on any organization's runtime reality. Custody and durable history stay with each Organization; nothing awaits Master Records.
+
+This handoff covers only the master-records organization's own Interlock/InTr transport boundary, the same pattern every organization `.github` carries. That boundary confers no execution, transition, custody or runtime-reality authority over this or any other organization. Inventory: `data/master-records-role-audit.json`. Dated status sections below are historical evidence and are left as recorded.
+
 ## Goal
 Establish master-records/.github as the canonical organizational ingress/egress definition for master-records.
 
@@ -80,7 +85,7 @@ Formalized coverage model:
 repository ledger = granular governed transition history
 organization ledger = ordered coverage of repository roots + org-native transitions
 organization transition ledger (ecosystem layer) = ordered coverage of organization roots + ecosystem-native transitions
-Master Records = organization records of those roots, used for reconstruction
+Master Records = recorder of released organization batch receipts (release predecessor: a verified organization receipt-chain segment); not a ledger layer, not a gate, awaited by no organization
 ```
 
 Upper layers cover lower layers by exact ordered root/range linkage rather than duplicating every granular receipt. Every accepted aggregate must remain deterministically resolvable downward, and any granular transition must be provable upward through repo -> org -> ecosystem inclusion.
@@ -98,4 +103,4 @@ Current implementation state:
 
 ## 2026-09-26 — bounded source-owned open-source audit
 
-Central existing task `ECOSYSTEM-OPEN-SOURCE-STRATEGY-001` / COSV `20010010100000` holds ecosystem aggregation; this native inventory covers 5 repository entries (1 public, 3 private, 1 internal). Both root `LICENSE` and `LICENSE.md` were not found on inspected default branches. Detailed evidence: `docs/OPEN_SOURCE_ORGANIZATION_INVENTORY_20260926.json` (nonpublic source-owner custody). Source file/historical licensing, contributor and third-party rights remain unverified, no release authorized. The central public census may consume aggregate counts only. Preserve all existing organization boundary and runtime authority.
+Central existing task `ECOSYSTEM-OPEN-SOURCE-STRATEGY-001` / COSV `20010010100000` holds ecosystem aggregation; this native inventory covers 5 repository entries (1 public, 3 private, 1 internal). Both root `LICENSE` and `LICENSE.md` were not found on inspected default branches. Detailed evidence: `docs/OPEN_SOURCE_ORGANIZATION_INVENTORY_20260926.json` (nonpublic source-owner custody). Source file/historical licensing, contributor and third-party rights remain unverified, no release authorized. The central public census may consume aggregate counts only. Preserve the existing organization boundary, which confers no runtime authority.

@@ -9,4 +9,4 @@ Rollup: `resident-runtime/aggregate_repo_transition.py`
 
 Organization replay must terminate using verified repo receipts plus this org chain; it terminates at the organization layer of the organization transition ledger, before any ecosystem-layer replay.
 
-Only the organization receipt and evidence required for ecosystem reconstruction propagate to `master-records/.github`. Recording creates no authority.
+The organization may release an organization batch receipt, whose release predecessor is a verified segment of this org chain, to Master Records for cross-organization reconstruction. Evidence and durable history stay with this organization; nothing here awaits Master Records. Recording creates no authority.

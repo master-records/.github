@@ -42,7 +42,13 @@
         "CUSTODY_ORGANIZATION_TRANSITION"
       ],
       "endpoint_adapter": "resident-runtime/ecosystem_transition_intake.py",
-      "runtime_required_for_consumption": true
+      "runtime_required_for_consumption": true,
+      "record_role": "RECORDER_OF_RELEASED_ORGANIZATION_BATCH_RECEIPTS",
+      "release_predecessor": "VERIFIED_ORGANIZATION_RECEIPT_CHAIN_SEGMENT",
+      "evidence_custody": "ORIGINATING_ORGANIZATION",
+      "transition_authority": "NONE",
+      "runtime_reality_authority": false,
+      "gates_organizations": false
     },
     {
       "service_id": "master-records.monitoring",
@@ -75,8 +81,14 @@
         "CUSTODY_SV002_SELF_CHARACTERIZATION"
       ],
       "endpoint_adapter": "resident-runtime/sv002_self_characterization_intake.py",
-      "runtime_required_for_consumption": true
+      "runtime_required_for_consumption": true,
+      "record_role": "RECORDER_OF_RELEASED_ORGANIZATION_BATCH_RECEIPTS",
+      "release_predecessor": "ORGANIZATION_LEDGER_ROOT_BOUND_ARTIFACT_SET",
+      "evidence_custody": "ORIGINATING_ORGANIZATION",
+      "transition_authority": "NONE",
+      "runtime_reality_authority": false,
+      "gates_organizations": false
     }
   ],
-  "boundary_rule": "Cross-organization ingress/egress semantics are defined by the organization boundary; endpoint authority remains transition-governed."
+  "boundary_rule": "Cross-organization ingress/egress semantics are defined by the organization boundary; endpoint authority remains transition-governed. Master Records records released organization batch receipts only; it holds no transition or runtime-reality authority and no organization awaits it."
 }

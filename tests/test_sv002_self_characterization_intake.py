@@ -31,15 +31,20 @@ class TestSV002MasterRecordsIntake(unittest.TestCase):
         clean.update(values)
         return mock.patch.dict(os.environ,clean,clear=True)
 
-    def test_materializes_exact_bundle_to_master_records_organization_record(self):
+    def materialize_artifacts(self,request):
+        """Record the manifest the way run() does, without the orchestration verifier."""
+        _,meta,digest,run_id=mod.verify_artifacts(request)
+        return mod.write_record(mod.build_manifest(request,meta,digest,run_id)),digest,run_id
+
+    def test_records_manifest_without_retaining_organization_artifacts(self):
         with tempfile.TemporaryDirectory() as td, self.env(**{mod.ORGANIZATION_RECORD_ROOT_ENV:td}):
             run_id="SV002-RUN-"+"c"*32
-            root,digest,observed=mod.materialize_artifacts(self.request(run_id))
+            root,digest,observed=self.materialize_artifacts(self.request(run_id))
             self.assertEqual(observed,run_id)
             self.assertEqual(root,Path(td).resolve()/run_id/"artifact-root")
             self.assertTrue((root/"MASTER_RECORDS_ORGANIZATION_RECORD_MANIFEST.json").is_file())
             self.assertFalse((root/mod.LEGACY_MASTER_RECORDS_CUSTODY["manifest"]).exists())
-            for name in mod.REQUIRED:self.assertTrue((root/name).is_file())
+            for name in mod.REQUIRED:self.assertFalse((root/name).exists())
             manifest=mod.read_manifest(root)
             self.assertEqual(manifest["artifact_set_sha256"],digest)
             self.assertEqual(manifest["schema"],"master-records.sv002-organization-record-manifest/v1")
@@ -49,14 +54,14 @@ class TestSV002MasterRecordsIntake(unittest.TestCase):
         run_id="SV002-RUN-"+"e"*32
         request=self.request(run_id)
         with tempfile.TemporaryDirectory() as td, self.env(**{mod.ORGANIZATION_RECORD_ROOT_ENV:td}):
-            root,_,_=mod.materialize_artifacts(request)
+            root,_,_=self.materialize_artifacts(request)
             path=root/mod.ORGANIZATION_RECORD_MANIFEST
             old=dict(json.loads(path.read_text()),schema="master-records.sv002-custody-manifest/v1",authority_effect="NONE_CUSTODY_ONLY")
             path.write_text(json.dumps(old))
-            mod.materialize_artifacts(request)
+            self.materialize_artifacts(request)
             path.write_text(json.dumps(dict(old,artifact_count=0)))
             with self.assertRaisesRegex(RuntimeError,"organization record manifest write-once collision"):
-                mod.materialize_artifacts(request)
+                self.materialize_artifacts(request)
 
     def run_ingress(self,operation):
         run_id="SV002-RUN-"+"f"*32
@@ -64,8 +69,16 @@ class TestSV002MasterRecordsIntake(unittest.TestCase):
         with tempfile.TemporaryDirectory() as td, self.env(**{mod.ORGANIZATION_RECORD_ROOT_ENV:td}):
             ingress=Path(td)/"in.json"
             ingress.write_text(json.dumps({"destination":{"org":"master-records","service":mod.SERVICE_ID},"payload":{"request":request}}))
-            with mock.patch.object(mod,"reconstruct",return_value={"status":"PASS"}):
-                return mod.run(ingress)
+            seen=[]
+            def reconstruct(workspace):
+                seen.append(sorted(p.name for p in workspace.iterdir()))
+                return {"status":"PASS"}
+            with mock.patch.object(mod,"reconstruct",side_effect=reconstruct):
+                result=mod.run(ingress)
+            root=Path(result["record_root"])
+            self.assertEqual(seen,[sorted([*mod.REQUIRED,mod.ORGANIZATION_RECORD_MANIFEST])])
+            self.assertEqual(sorted(p.name for p in root.iterdir()),sorted([mod.ORGANIZATION_RECORD_MANIFEST,mod.RECONSTRUCTION_RECEIPT]))
+            return result
 
     def test_run_accepts_new_and_legacy_operation_and_emits_new_fields(self):
         for operation in ("ORGANIZATION_RECORD_SV002_SELF_CHARACTERIZATION","CUSTODY_SV002_SELF_CHARACTERIZATION"):
@@ -74,6 +87,8 @@ class TestSV002MasterRecordsIntake(unittest.TestCase):
                 self.assertEqual(result["schema"],"master-records.sv002-self-characterization-organization-record-intake/v1")
                 self.assertEqual(result["authority_effect"],"NONE_ORGANIZATION_RECORD_ONLY")
                 self.assertIn("record_root",result)
+                self.assertIs(result["artifact_bytes_retained"],False)
+                self.assertEqual(result["evidence_custody"],"ORIGINATING_ORGANIZATION")
                 self.assertNotIn("custody_root",result)
         with self.assertRaisesRegex(RuntimeError,"operation mismatch"):
             self.run_ingress("OTHER")
@@ -96,12 +111,12 @@ class TestSV002MasterRecordsIntake(unittest.TestCase):
                     "artifact_set_sha256":request["artifact_set_sha256"],"organization_ledger_root_hash":request["organization_ledger_root_hash"]}
             (root/mod.LEGACY_MASTER_RECORDS_CUSTODY["manifest"]).write_text(json.dumps(legacy))
             self.assertEqual(mod.read_manifest(root)["run_id"],run_id)
-            mod.materialize_artifacts(request)
+            self.materialize_artifacts(request)
             self.assertTrue((root/mod.ORGANIZATION_RECORD_MANIFEST).is_file())
             (root/mod.ORGANIZATION_RECORD_MANIFEST).unlink()
             (root/mod.LEGACY_MASTER_RECORDS_CUSTODY["manifest"]).write_text(json.dumps(dict(legacy,artifact_set_sha256="0"*64)))
             with self.assertRaisesRegex(RuntimeError,"organization record manifest write-once collision"):
-                mod.materialize_artifacts(request)
+                self.materialize_artifacts(request)
 
     def test_blocked_result_emits_new_field_only(self):
         with tempfile.TemporaryDirectory() as td:

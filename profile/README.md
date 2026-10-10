@@ -1,20 +1,20 @@
 # master-records
 
-**master-records is the StegVerse organization for organization records and their reconstruction.**
+**master-records is the StegVerse recorder of released organization batch receipts for cross-organization reconstruction.**
 
-It holds the systems that monitor, orchestrate, and keep the organization records needed to reconstruct what happened across governed work.
+An Organization may release a batch receipt whose release predecessor is a verified segment of its own organization receipt chain. Master Records records that released receipt so cross-organization history can be reconstructed. Custody and durable history stay with each Organization.
 
 ## What belongs here
 
 The organization includes:
 
-- **monitoring** — ecosystem-level observation and status surfaces;
-- **orchestration** — durable coordination and record-binding paths;
-- **telemetry** — operational evidence streams;
-- **core-lite** — bounded supporting control logic.
+- **orchestration** — recording of released organization batch receipts and the deterministic reconstruction verifiers that read them;
+- **monitoring** — observation of Master Records' own recording surfaces (not of any organization's runtime reality);
+- **telemetry** — Master Records' own operational telemetry;
+- **core-lite** — bounded supporting logic internal to Master Records.
 
 ## Role in the ecosystem
 
-Master Records holds organization records, including end-of-life transition records, with the provenance, receipts, state relationships, and reconstruction paths needed to reconstruct them. Custody and retention of the underlying evidence stay with the Organization that produced it.
+Master Records records released organization batch receipts, including those covering end-of-life transitions, for cross-organization reconstruction. Its release predecessor is a verified organization receipt-chain segment. Custody, retention and durable history of the underlying evidence stay with the Organization that produced it.
 
-Recording a transition does not authorize it. Admission, gates, closure, and prerequisites belong to Interlock/InTr, and ledger roles belong to the organization transition ledger.
+Master Records cannot create, admit, authorize, infer or repair a transition, and it never held transition authority. It is not the runtime-reality authority and not a gate on any organization's runtime reality; no organization awaits it. Recording a released receipt does not authorize anything. Admission, gates, closure, and prerequisites belong to Interlock/InTr, and ledger roles belong to the organization transition ledger.
