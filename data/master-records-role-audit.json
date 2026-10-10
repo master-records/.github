@@ -15,8 +15,7 @@
     },
     "by_remediation_status": {
       "NOT_APPLICABLE": 39,
-      "NOT_REMEDIATED_CROSS_REPOSITORY_CONTRACT": 1,
-      "REMEDIATED": 23
+      "REMEDIATED": 24
     },
     "total": 63
   },
@@ -449,8 +448,8 @@
       "statement": "requires predecessor_ecosystem_state_sha256 / successor_ecosystem_state_sha256 and invokes master-records/orchestration services/ecosystem_transition_ledger.py",
       "classification": "IMPROPER_CODE",
       "reason": "Master Records keeps ecosystem-state transitions, which is the ecosystem-ledger / runtime-reality role it does not hold.",
-      "remediation_status": "NOT_REMEDIATED_CROSS_REPOSITORY_CONTRACT",
-      "remediation": "Not changed here. The arguments are the CLI contract of master-records/orchestration services/ecosystem_transition_ledger.py, which is outside this repository. Removing them from this side alone would break recording. It needs a coordinated change in master-records/orchestration that drops the ecosystem-state arguments and records the released receipt only."
+      "remediation_status": "REMEDIATED",
+      "remediation": "Remediated by master-records/orchestration#119 (merge 626d2579: the ecosystem transition ledger records only the released organization receipt, with no ecosystem state) and master-records/.github#14 (merge c5f40137: the intake no longer requires or forwards predecessor/successor_ecosystem_state_sha256)."
     },
     {
       "file": "resident-runtime/submit_org_transition_to_master_records.py",
