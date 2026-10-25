@@ -26,7 +26,15 @@ def sha(v:Any)->str:
     raw=v if isinstance(v,(bytes,bytearray)) else canon(v)
     return "sha256:"+hashlib.sha256(bytes(raw)).hexdigest()
 
-def hb_reference(now_ns:int|None=None)->dict[str,Any]:
+def hb_reference(now_ns:int|None=None, *, epoch:int|None=None)->dict[str,Any]:
+    # A supplied epoch (component intr-ingress-ledger/v1): no clock is read and the reference says so.
+    if epoch is not None:
+        if now_ns is not None: raise ValueError("supply_epoch_or_sample_not_both")
+        if not isinstance(epoch,int) or isinstance(epoch,bool) or epoch<HB_ANCHOR_EPOCH:
+            raise ValueError("epoch_precedes_hb32_anchor")
+        return {"epoch":epoch,"generation":epoch,"heartbeat_id":f"HB:{epoch}","phase_offset_ns":0,
+                "frequency_hz":HB_HZ,"progression_dependency":"OSCILLATOR_ONLY","derived_from_clock":False,
+                "authority_effect":"NONE"}
     if now_ns is None:
         now_ns=int(datetime.now(timezone.utc).timestamp()*1_000_000_000)
     if now_ns<HB_ANCHOR_UNIX_NS:

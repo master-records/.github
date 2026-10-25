@@ -1,0 +1,12 @@
+{
+  "schema": "stegverse.organization-ledger-genesis-epoch/v1",
+  "repository": "master-records/.github",
+  "rule": "Read only while this organization's ledger has no HEAD. The first main-merge transfer the writer appends opens refs/stegverse/organization-ledger at hb_epoch, which is the verified head epoch of epoch_source (read anonymously, no credential; no clock). Once the ledger has a HEAD, every later receipt takes its epoch from that head and this packet is not read.",
+  "hb_epoch": 469411750,
+  "epoch_source": {
+    "ledger_repository": "StegVerse-Labs/.github",
+    "ledger_ref": "refs/stegverse/organization-ledger",
+    "ledger_tip": "b7917dcadcbf77a6abca1063970baef96d9309ea",
+    "head_receipt_sha256": "sha256:f840271ea47e9ff0fc2b81bb0d428dfdadc2cbfb2a4299a727ecf07e2ff32c6f"
+  }
+}
