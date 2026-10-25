@@ -1,0 +1,58 @@
+{
+  "schema": "stegverse.component-install-record/v1",
+  "component": "intr-ingress-ledger/v1",
+  "organization": "master-records",
+  "address": "master-records.intr-destination",
+  "owning_existing_goal": "StegVerse-org/.github#162 (task SVORG-INTR-INGRESS-LEDGER-COMPONENT-001)",
+  "authentic_receipt": false,
+  "files": [
+    {
+      "path": "resident-runtime/aggregate_repo_transition.py",
+      "sha256": "sha256:618c79859cfae212d3d54622b56aa897793798814f1afec4153911c1505f6986"
+    },
+    {
+      "path": "resident-runtime/ledger_store.py",
+      "sha256": "sha256:a8caa85390fbc265852eb49eea7f4b03071da4e1f209ab077d8b2edc8174dbe5"
+    },
+    {
+      "path": ".stegverse/transition-ledger/emit.py",
+      "sha256": "sha256:46f905de429a80b1f3f144574b3225436cc30cc8f11bfda53c6a4b54234813b7"
+    },
+    {
+      "path": "org-boundary/runtime/capability_ingress.py",
+      "sha256": "sha256:731dab382f43ff3321f6e039cee1be338099345bf4b0e8fec89e7de1a72bca44"
+    },
+    {
+      "path": "org-runtime/intr_protocol.py",
+      "sha256": "sha256:9cd92d47f9a697f557029d9271455fe4a1b31de25f1d1ee39063a0776c72b843"
+    },
+    {
+      "path": "data/intr-protocol/v1/protocol.json",
+      "sha256": "sha256:f59ce9457cff9df312d5f6c57827654d3f7de4daaef74b79169c534c48cfdeea"
+    },
+    {
+      "path": "resident-runtime/intr_destination_ingress.py",
+      "sha256": "sha256:cfcaf12e80333c717b99b6cedaed5fb8e9eaa8bf30a16d921950c16cbea9bc6b"
+    },
+    {
+      "path": "resident-runtime/organization_ledger_readback.py",
+      "sha256": "sha256:e24650287c04a964686a331c8e19af572617aff91d0a2885ec376f3e8db790b8"
+    },
+    {
+      "path": ".stegverse/transition-ledger/contract.json",
+      "sha256": "sha256:773491e2ab60c98b99f6ccc4c338df570256c938155e7f5d440bf1aaded4903a"
+    },
+    {
+      "path": ".stegverse/transition-ledger/org-contract.json",
+      "sha256": "sha256:815f847f0ec1e843e0fc279a0beacf171b82f448cd95d434783dd17e394b60a1"
+    },
+    {
+      "path": "tools/tasks/folded/intr-ingress-ledger-component-validation.yml",
+      "sha256": "sha256:a0dcc298bc5bcee8c30bf0eba3b58574f5431f9bbe2b1c6b6f54829306b6a88a"
+    },
+    {
+      "path": "tests/test_intr_ingress_ledger_component.py",
+      "sha256": "sha256:400394a66fedf87ddee10d5264d6894003d75e1f4bf83eef3eaba3791eec52d4"
+    }
+  ]
+}

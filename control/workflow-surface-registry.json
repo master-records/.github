@@ -1,0 +1,96 @@
+{
+ "schema": "stegverse.workflow-surface-registry/v1",
+ "goal_id": "G17-WORKFLOW-SURFACE-MINIMIZATION",
+ "repository": "master-records/.github",
+ "policy_issue": "StegVerse-Labs/.github#167, #168; StegVerse-org/.github#166",
+ "preferred_repository_workflow_count_max": 2,
+ "exception_repository_workflow_count_max": 3,
+ "credential_authority": "the SKAP Vault inside KV is the only PII and credential store for every user, including the StegVerse ecosystem's own; no secret or token is referenced, introduced or moved by this fold",
+ "invariants": [
+  "Every workflow file is registered in surfaces[]; an unregistered or changed one fails closed (tests/test_workflow_surface_registry.py).",
+  "A new check is a group in tools/tasks/task_catalog.json, never a new workflow file.",
+  "The stable dispatcher carries no workflow_dispatch, schedule, repository_dispatch, issues or workflow_run trigger; a kept surface is pinned by sha256 and unchanged by the fold."
+ ],
+ "unregistered_workflow_outcome": {
+  "disposition": "FAIL_CLOSED",
+  "failure_code": "UNREGISTERED_WORKFLOW_SURFACE",
+  "failed_predicate": "EVERY_WORKFLOW_FILE_IS_REGISTERED",
+  "required_evidence_or_repair": "register the file in control/workflow-surface-registry.json surfaces[] or fold it into tools/tasks/task_catalog.json",
+  "retry_entrypoint": "tests/test_workflow_surface_registry.py",
+  "owning_existing_goal": "G17-WORKFLOW-SURFACE-MINIMIZATION (StegVerse-Labs/.github#167/#168); StegVerse-org/.github#166",
+  "next_attempt": "the next pull request touching .github/workflows/"
+ },
+ "surfaces": [
+  {
+   "path": ".github/workflows/validation-dispatcher.yml",
+   "classification": "KEEP_STABLE_DISPATCHER",
+   "triggers": [
+    "pull_request",
+    "push"
+   ],
+   "permissions": {
+    "contents": "read"
+   }
+  },
+  {
+   "path": ".github/workflows/organization-ledger-writer.yml",
+   "classification": "KEEP_EXISTING_SURFACE_UNCHANGED",
+   "triggers": [
+    "push"
+   ],
+   "permissions": {
+    "contents": "read"
+   },
+   "reason": "KEEP_EXISTING_SURFACE_UNCHANGED: the organization-ledger writer (merge-transfer job with contents: write, pushing refs/stegverse/organization-ledger, including its genesis from the committed epoch packet) on push to main. Ledger appends go only through this documented writer, and the dispatcher holds contents: read only, so it is kept unchanged and not folded or eliminated.",
+   "verbatim_sha256": "52566ee5c4bf74c4070149376062d1f037fd86022d4967334c596a61c03b43bb"
+  }
+ ],
+ "folded": [
+  {
+   "workflow": ".github/workflows/intr-ingress-ledger-component-validation.yml",
+   "name": "Validate InTr Ingress Ledger Component",
+   "triggers_before": [
+    "pull_request",
+    "push"
+   ],
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "status": "DONE",
+   "catalog_groups": [
+    "intr-ingress-ledger-component-validation.validate-intr-ingress-ledger"
+   ],
+   "verbatim_record": "tools/tasks/folded/intr-ingress-ledger-component-validation.yml",
+   "verbatim_sha256": "a0dcc298bc5bcee8c30bf0eba3b58574f5431f9bbe2b1c6b6f54829306b6a88a"
+  },
+  {
+   "workflow": ".github/workflows/org-boundary-execution.yml",
+   "name": "Org Boundary Execution",
+   "triggers_before": [
+    "push",
+    "workflow_dispatch"
+   ],
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "status": "DONE",
+   "catalog_groups": [
+    "org-boundary-execution.execute"
+   ],
+   "verbatim_record": "tools/tasks/folded/org-boundary-execution.yml",
+   "verbatim_sha256": "59f5824bf1ee7694f35d1d78dc0c8ea673ea1621aa780b4b7a2d2abea29794b4"
+  },
+  {
+   "workflow": ".github/workflows/org-runtime-boundary.yml",
+   "name": "Validate Organization Resident Runtime and Interlock-InTr Boundary",
+   "triggers_before": [
+    "pull_request",
+    "push",
+    "workflow_dispatch"
+   ],
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "status": "DONE",
+   "catalog_groups": [
+    "org-runtime-boundary.validate"
+   ],
+   "verbatim_record": "tools/tasks/folded/org-runtime-boundary.yml",
+   "verbatim_sha256": "270265a9faa5e5b000b8184d1c36f068b614b83007d22417fdd31f29fad1db1d"
+  }
+ ]
+}

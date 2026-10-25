@@ -1,0 +1,210 @@
+{
+ "schema": "stegverse.task-catalog/v1",
+ "repository": "master-records/.github",
+ "goal_id": "G17-WORKFLOW-SURFACE-MINIMIZATION",
+ "authority": "Rigel 2026-10-24 retroactive G17 enforcement (StegVerse-org/.github#166); pattern StegVerse-Labs/StegDB#60 (eab2e773)",
+ "dispatcher": ".github/workflows/validation-dispatcher.yml",
+ "runner": "tools/tasks/run_catalog.py",
+ "runner_source": "StegVerse-Labs/StegDB tools/tasks/run_catalog.py @ eab2e773271f3e63466a710f1b4555f677882848 (sha256 f741f30557888fd8e4852a52adfc65736a08898d49ade7519f6bcc2672921e9b), copied unmodified",
+ "rule": "Every check a folded workflow job ran is one group here; its step bodies are the original run blocks byte for byte, pinned by sha256, except the repairs listed. A new check is a new group (or a step in one), never a new workflow file.",
+ "path_filters": "Dropped: every group runs on every pull_request and push to main (a superset of the original path-filtered runs). workflow_dispatch/schedule triggers are not carried (no manual dispatch, no cron).",
+ "repairs": [
+  "In the install record .stegverse/components/intr-ingress-ledger-v1.json, the row for the component's validation workflow now uses the path tools/tasks/folded/intr-ingress-ledger-component-validation.yml. The bytes are unchanged (git mv), so the pinned sha256 still matches.",
+  "org-boundary-execution is master-records' own workflow (it also runs tests.test_sv002_self_characterization_intake and tests.test_ecosystem_transition_intake); its run block is carried byte for byte. Its path filters and workflow_dispatch trigger are not carried.",
+  "intr-ingress-ledger-component-validation is carried from Triad-Test/.github@c270bec tools/tasks/folded (identity strings only); master-records had no copy of the workflow before this install.",
+  "organization-ledger-genesis.unit is a catalog addition for resident-runtime/ledger_genesis.py (no folded source workflow)."
+ ],
+ "folded_from_commit": "a5f82152b105a0547bc007fed3d636dcd9087dde",
+ "groups": [
+  {
+   "id": "intr-ingress-ledger-component-validation.validate-intr-ingress-ledger",
+   "source": {
+    "workflow": ".github/workflows/intr-ingress-ledger-component-validation.yml",
+    "workflow_name": "Validate InTr Ingress Ledger Component",
+    "job": "validate-intr-ingress-ledger",
+    "job_name": null,
+    "commit": "c270bec",
+    "triggers_before": [
+     "pull_request",
+     "push"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    }
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Installed bytes, InTr v1 conformance, ledger designation, ingress on temporary ledgers",
+     "run_file": "tools/tasks/steps/intr-ingress-ledger-component-validation.validate-intr-ingress-ledger/01-installed-bytes-intr-v1-conformance-ledger-designation-ingre.sh",
+     "run_sha256": "52762ab1be61e6f2ab927034434cb666e0531bfe4f0ebf4478f4c7c571f908a5"
+    },
+    {
+     "name": "No InTr hop inside this organization: the self-closure carrier is retired (Rigel's rule, 2026-10-25)",
+     "run_file": "tools/tasks/steps/intr-ingress-ledger-component-validation.validate-intr-ingress-ledger/02-no-intr-hop-inside-this-organization-the-self-closure-carrie.sh",
+     "run_sha256": "e66689cf62fcbe884f3b7d3c6ee495cd69fad81a063a8eb4c385974296cc271e"
+    },
+    {
+     "name": "Conformance, read-only: master-records at master-records.intr-destination",
+     "run_file": "tools/tasks/steps/intr-ingress-ledger-component-validation.validate-intr-ingress-ledger/03-conformance-read-only-master-records-at-master-records-intr.sh",
+     "run_sha256": "64494929ed9ddd8cbc07c1ab58dac2e9b36f5e303f653b963169a7b9b9c3bd3b"
+    }
+   ],
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "false",
+    "timeout_minutes": 30
+   }
+  },
+  {
+   "id": "org-boundary-execution.execute",
+   "source": {
+    "workflow": ".github/workflows/org-boundary-execution.yml",
+    "workflow_name": "Org Boundary Execution",
+    "job": "execute",
+    "job_name": null,
+    "commit": "a5f8215",
+    "triggers_before": [
+     "push",
+     "pull_request",
+     "workflow_dispatch"
+    ],
+    "permissions_before": null
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Run boundary tests",
+     "run_file": "tools/tasks/steps/org-boundary-execution.execute/01-run-boundary-tests.sh",
+     "run_sha256": "65e0b6a9d7cbb6bb490e50ba0d81c28a3e8fd8acd31eb78a29dd0d22eb0f6f20"
+    },
+    {
+     "name": "Execute fixture when present",
+     "run_file": "tools/tasks/steps/org-boundary-execution.execute/02-execute-fixture-when-present.sh",
+     "run_sha256": "c9534314915fe0577eb14d27f25380e1411cb83d4dd9bf8727cd1f0b78f03994",
+     "shell": "bash"
+    }
+   ],
+   "artifacts": [
+    {
+     "name": "org-boundary-execution",
+     "path": "org-boundary/evidence/runtime/",
+     "if_no_files_found": "ignore",
+     "if": "success()"
+    }
+   ],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 30,
+    "artifact_name": "org-boundary-execution",
+    "artifact_if_no_files_found": "ignore"
+   }
+  },
+  {
+   "id": "org-runtime-boundary.validate",
+   "source": {
+    "workflow": ".github/workflows/org-runtime-boundary.yml",
+    "workflow_name": "Validate Organization Resident Runtime and Interlock-InTr Boundary",
+    "job": "validate",
+    "job_name": null,
+    "commit": "a5f8215",
+    "triggers_before": [
+     "pull_request",
+     "push",
+     "workflow_dispatch"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    }
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Validate organization boundary",
+     "run_file": "tools/tasks/steps/org-runtime-boundary.validate/01-validate-organization-boundary.sh",
+     "run_sha256": "c9c2fd2dfe2c5d29536cc797227f7bbfa4e717660d99b88410cbd839f9899cfe"
+    },
+    {
+     "name": "Validate activation request generation",
+     "run_file": "tools/tasks/steps/org-runtime-boundary.validate/02-validate-activation-request-generation.sh",
+     "run_sha256": "414092fd3ea5ea34767176c11026846851a31e2bb7896c82d9424e2aaa08c97f"
+    },
+    {
+     "name": "Validate Interlock/InTr ingress generation",
+     "run_file": "tools/tasks/steps/org-runtime-boundary.validate/03-validate-interlock-intr-ingress-generation.sh",
+     "run_sha256": "1e839eaf709caf91c71c5ffc27049b8590735ad5bf13e46492805caa709661a8"
+    },
+    {
+     "name": "Validate Interlock/InTr egress generation",
+     "run_file": "tools/tasks/steps/org-runtime-boundary.validate/04-validate-interlock-intr-egress-generation.sh",
+     "run_sha256": "153882a73b231e18f324f59519bb2e13cdda510de9a998665392fa46b829401c"
+    }
+   ],
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "true",
+    "timeout_minutes": 30
+   }
+  },
+  {
+   "id": "workflow-surface-registry.validate",
+   "catalog_addition": "G17 registry gate (no folded source workflow)",
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Workflow files equal the registered surfaces; catalog verifies ALLOW",
+     "run_file": "tools/tasks/steps/workflow-surface-registry.validate/01-registry.sh",
+     "run_sha256": "811824e88664923006be2eeb35632d710f5504145967f61632ad9e8fbdcb35ca"
+    }
+   ],
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "false",
+    "timeout_minutes": 10,
+    "python_version": "3.11"
+   }
+  },
+  {
+   "id": "organization-ledger-genesis.unit",
+   "catalog_addition": "Organization ledger genesis from the committed epoch packet (no folded source workflow)",
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {},
+   "steps": [
+    {
+     "name": "Genesis opens the ledger once with a main-merge transfer at the verified epoch; refusals carry six fields",
+     "run_file": "tools/tasks/steps/organization-ledger-genesis.unit/01-genesis.sh",
+     "run_sha256": "a9746c204711b581a5b4b8ce8e81c6097d8b6ff1aa4ff38ebd775dd364647909"
+    }
+   ],
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "1",
+    "persist_credentials": "false",
+    "timeout_minutes": 10
+   }
+  }
+ ]
+}
