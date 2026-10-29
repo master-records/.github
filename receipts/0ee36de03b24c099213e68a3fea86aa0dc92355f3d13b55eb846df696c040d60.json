@@ -1,0 +1,38 @@
+{
+  "authority_effect": "NONE",
+  "boundary_evidence": {
+    "communication_id": "intr-path-v1:master-records->formalism-tests",
+    "destination_organization": "formalism-tests",
+    "disposition": "ALLOW",
+    "operation": "INTR_MESH_PATH_TRANSFER",
+    "path_id": "master-records->formalism-tests:intr-destination",
+    "profile_id": "intr-mesh-path-transfer",
+    "repository": "master-records/.github",
+    "transfer_commit": "567e917ebabeaa3ecb896d8d93949b94b9b0d880"
+  },
+  "canonical_state_transition_receipt_sha256": null,
+  "hb_reference": {
+    "authority_effect": "NONE",
+    "derived_from_clock": false,
+    "epoch": 469411750,
+    "frequency_hz": 100,
+    "generation": 469411750,
+    "heartbeat_id": "HB:469411750",
+    "phase_offset_ns": 0,
+    "progression_dependency": "OSCILLATOR_ONLY"
+  },
+  "org_transition_class": "REPO_STATE_PROPAGATION",
+  "organization": "master-records",
+  "predecessor_org_state_sha256": "sha256:633b6c09716abdecc12fdca6d324a9b9b7b334c5795ffc36bd2e8ce7c75d86fe",
+  "previous_receipt_sha256": "sha256:cf4476ec88e3f702e4807ef98a6098b971f677f55d67ea1e9f3d986613a50c83",
+  "receipt_sha256": "sha256:0ee36de03b24c099213e68a3fea86aa0dc92355f3d13b55eb846df696c040d60",
+  "repo_receipt_sha256": "sha256:9c8fab7217614fd1fde7b972bba3b98799a90054303727de5f0e74c605dbc4ab",
+  "repo_transition_id": "INTR_MESH_PATH_TRANSFER:master-records->formalism-tests:intr-destination@intr-path-v1:master-records->formalism-tests",
+  "schema": "stegverse.organization-transition-receipt/v1",
+  "source_receipt_schema": "stegverse.repo-transition-receipt/v1",
+  "source_repository": "master-records/.github",
+  "source_transition_id": "INTR_MESH_PATH_TRANSFER:master-records->formalism-tests:intr-destination@intr-path-v1:master-records->formalism-tests",
+  "source_transition_sha256": "sha256:9c8fab7217614fd1fde7b972bba3b98799a90054303727de5f0e74c605dbc4ab",
+  "subject_or_correlation_id": null,
+  "successor_org_state_sha256": "sha256:9b67bb4a73f4242ee30f25097010c65bc064e4c2c2a02f151b9735446dc912be"
+}
