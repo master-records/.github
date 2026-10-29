@@ -1,0 +1,38 @@
+{
+  "authority_effect": "NONE",
+  "boundary_evidence": {
+    "communication_id": "intr-path-v1:master-records->StegVerse-Labs",
+    "destination_organization": "StegVerse-Labs",
+    "disposition": "ALLOW",
+    "operation": "INTR_MESH_PATH_TRANSFER",
+    "path_id": "master-records->StegVerse-Labs:intr-destination",
+    "profile_id": "intr-mesh-path-transfer",
+    "repository": "master-records/.github",
+    "transfer_commit": "567e917ebabeaa3ecb896d8d93949b94b9b0d880"
+  },
+  "canonical_state_transition_receipt_sha256": null,
+  "hb_reference": {
+    "authority_effect": "NONE",
+    "derived_from_clock": false,
+    "epoch": 469411750,
+    "frequency_hz": 100,
+    "generation": 469411750,
+    "heartbeat_id": "HB:469411750",
+    "phase_offset_ns": 0,
+    "progression_dependency": "OSCILLATOR_ONLY"
+  },
+  "org_transition_class": "REPO_STATE_PROPAGATION",
+  "organization": "master-records",
+  "predecessor_org_state_sha256": "sha256:5db3a366df61816bc8e5f1dd2f53bf690e97e936c893bf0492641a27c8229bb3",
+  "previous_receipt_sha256": "sha256:ca0bdf44bd73b7ffbc143c3b423c32d8a3eb6be8644106ff9f107d4dd3fdb20a",
+  "receipt_sha256": "sha256:822fdadababcb91a10d0223789e160d8862805ca14147090fd7db4c735a11482",
+  "repo_receipt_sha256": "sha256:2e4dfe1c18797f53ef91c6e4d121229cc93b8ea3be191469feb0e0bdb530646d",
+  "repo_transition_id": "INTR_MESH_PATH_TRANSFER:master-records->StegVerse-Labs:intr-destination@intr-path-v1:master-records->StegVerse-Labs",
+  "schema": "stegverse.organization-transition-receipt/v1",
+  "source_receipt_schema": "stegverse.repo-transition-receipt/v1",
+  "source_repository": "master-records/.github",
+  "source_transition_id": "INTR_MESH_PATH_TRANSFER:master-records->StegVerse-Labs:intr-destination@intr-path-v1:master-records->StegVerse-Labs",
+  "source_transition_sha256": "sha256:2e4dfe1c18797f53ef91c6e4d121229cc93b8ea3be191469feb0e0bdb530646d",
+  "subject_or_correlation_id": null,
+  "successor_org_state_sha256": "sha256:cd705402402dc964a8e435b3996f2a3eecb93718d6922d996d9e83c52b9a0197"
+}
