@@ -42,7 +42,7 @@
     "contents": "read"
    },
    "reason": "KEEP_EXISTING_SURFACE_UNCHANGED: the organization-ledger writer (merge-transfer job with contents: write, pushing refs/stegverse/organization-ledger, including its genesis from the committed epoch packet) on push to main. Ledger appends go only through this documented writer, and the dispatcher holds contents: read only, so it is kept unchanged and not folded or eliminated.",
-   "verbatim_sha256": "52566ee5c4bf74c4070149376062d1f037fd86022d4967334c596a61c03b43bb"
+   "verbatim_sha256": "1f41c3ebf1d5dce9b8b29128b903e5dc088626817c6e2f6bd92e304f718ab2cb"
   }
  ],
  "folded": [
@@ -91,6 +91,22 @@
    ],
    "verbatim_record": "tools/tasks/folded/org-runtime-boundary.yml",
    "verbatim_sha256": "270265a9faa5e5b000b8184d1c36f068b614b83007d22417fdd31f29fad1db1d"
+  },
+  {
+   "workflow": ".github/workflows/intr-path-transfer-validation.yml",
+   "name": "Validate InTr Mesh Path Transfer",
+   "triggers_before": [
+    "pull_request",
+    "push"
+   ],
+   "classification": "CONSOLIDATE_INTO_STABLE_DISPATCHER",
+   "status": "DONE",
+   "catalog_groups": [
+    "intr-path-transfer-validation.unit",
+    "intr-path-transfer-validation.dry-run"
+   ],
+   "verbatim_record": "tools/tasks/folded/intr-path-transfer-validation.yml",
+   "verbatim_sha256": "7042b63553c5ab3a1a2412dc88cf1fb92db9ad70eaa1a1f84603c6f03375fba1"
   }
  ]
 }
