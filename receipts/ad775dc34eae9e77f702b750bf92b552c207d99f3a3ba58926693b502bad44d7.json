@@ -1,0 +1,38 @@
+{
+  "authority_effect": "NONE",
+  "boundary_evidence": {
+    "communication_id": "intr-path-v1:master-records->ECAT-ICAT-Formal",
+    "destination_organization": "ECAT-ICAT-Formal",
+    "disposition": "ALLOW",
+    "operation": "INTR_MESH_PATH_TRANSFER",
+    "path_id": "master-records->ECAT-ICAT-Formal:intr-destination",
+    "profile_id": "intr-mesh-path-transfer",
+    "repository": "master-records/.github",
+    "transfer_commit": "567e917ebabeaa3ecb896d8d93949b94b9b0d880"
+  },
+  "canonical_state_transition_receipt_sha256": null,
+  "hb_reference": {
+    "authority_effect": "NONE",
+    "derived_from_clock": false,
+    "epoch": 469411750,
+    "frequency_hz": 100,
+    "generation": 469411750,
+    "heartbeat_id": "HB:469411750",
+    "phase_offset_ns": 0,
+    "progression_dependency": "OSCILLATOR_ONLY"
+  },
+  "org_transition_class": "REPO_STATE_PROPAGATION",
+  "organization": "master-records",
+  "predecessor_org_state_sha256": "sha256:de84fa78350e8724ffadd9a000c6b265f743f20b08171d2472081f18fec7d294",
+  "previous_receipt_sha256": "sha256:bb2f0086ad4e58dd1f7a450e55417502f262cfc55c412baa4a91d5bf0f378857",
+  "receipt_sha256": "sha256:ad775dc34eae9e77f702b750bf92b552c207d99f3a3ba58926693b502bad44d7",
+  "repo_receipt_sha256": "sha256:5e1469ad6e1714768854944db37e5e70925160eaca69011d8749d65c4a807b04",
+  "repo_transition_id": "INTR_MESH_PATH_TRANSFER:master-records->ECAT-ICAT-Formal:intr-destination@intr-path-v1:master-records->ECAT-ICAT-Formal",
+  "schema": "stegverse.organization-transition-receipt/v1",
+  "source_receipt_schema": "stegverse.repo-transition-receipt/v1",
+  "source_repository": "master-records/.github",
+  "source_transition_id": "INTR_MESH_PATH_TRANSFER:master-records->ECAT-ICAT-Formal:intr-destination@intr-path-v1:master-records->ECAT-ICAT-Formal",
+  "source_transition_sha256": "sha256:5e1469ad6e1714768854944db37e5e70925160eaca69011d8749d65c4a807b04",
+  "subject_or_correlation_id": null,
+  "successor_org_state_sha256": "sha256:df1127056585f06f30151e4c22a8a7f0513db917c90a0f31859067bf29174953"
+}
