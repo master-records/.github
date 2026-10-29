@@ -1,0 +1,45 @@
+{
+  "authority_effect": "NONE",
+  "evidence": {
+    "capability": "intr-destination",
+    "communication_id": "intr-path-v1:master-records->AaCT-E",
+    "destination_address": "aact-e.intr-destination",
+    "destination_organization": "AaCT-E",
+    "disposition": "ALLOW",
+    "merge_transfer_organization_receipt_sha256": "sha256:c5b33f56657d44db82a33f0836708824dd07a2d460a8b08d822f9e729e294d82",
+    "message": {
+      "body": {
+        "path_id": "master-records->AaCT-E:intr-destination",
+        "schema": "stegverse.org-intr-destination-diagnostic/v1",
+        "transfer_commit": "567e917ebabeaa3ecb896d8d93949b94b9b0d880"
+      },
+      "communication_id": "intr-path-v1:master-records->AaCT-E",
+      "message_class": "ecosystem.communication"
+    },
+    "message_sha256": "sha256:b15bb393526cd1fa6e60a98f8cbc8c62b9cbf3937ebed8899482f75bb2d4500d",
+    "path_id": "master-records->AaCT-E:intr-destination",
+    "payload_sha256": "sha256:c506ca888a4679f752051823b82e7124faf8269702e2beb34f120cc996b8e24c",
+    "repository": "master-records/.github",
+    "schema": "stegverse.intr-path-transfer-evidence/v1",
+    "source_organization": "master-records",
+    "transfer_commit": "567e917ebabeaa3ecb896d8d93949b94b9b0d880"
+  },
+  "hb_reference": {
+    "authority_effect": "NONE",
+    "derived_from_clock": false,
+    "epoch": 469411750,
+    "frequency_hz": 100,
+    "generation": 469411750,
+    "heartbeat_id": "HB:469411750",
+    "phase_offset_ns": 0,
+    "progression_dependency": "OSCILLATOR_ONLY"
+  },
+  "predecessor_state_sha256": "sha256:c506ca888a4679f752051823b82e7124faf8269702e2beb34f120cc996b8e24c",
+  "previous_receipt_sha256": "sha256:b2c2e1d8bd1fe93d06135dc4dea26b3374e4baaf0369aa3d6d1b8fd3bfa85912",
+  "receipt_sha256": "sha256:bc05595fc69236b10c1f11be91720e57ecb45d3c4e5ec092325ddcf5f1113b5a",
+  "repository": "master-records/.github",
+  "schema": "stegverse.repo-transition-receipt/v1",
+  "successor_state_sha256": "sha256:1a6650d889cda4e57548a1705d850bbe13aefc529140d3e5b94590e42e070268",
+  "transition_class": "INTR_MESH_PATH_TRANSFER",
+  "transition_id": "INTR_MESH_PATH_TRANSFER:master-records->AaCT-E:intr-destination@intr-path-v1:master-records->AaCT-E"
+}
