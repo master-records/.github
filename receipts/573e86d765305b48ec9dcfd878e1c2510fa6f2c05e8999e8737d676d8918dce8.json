@@ -1,0 +1,38 @@
+{
+  "authority_effect": "NONE",
+  "boundary_evidence": {
+    "communication_id": "intr-path-v1:master-records->AdmittedCode",
+    "destination_organization": "AdmittedCode",
+    "disposition": "ALLOW",
+    "operation": "INTR_MESH_PATH_TRANSFER",
+    "path_id": "master-records->AdmittedCode:intr-destination",
+    "profile_id": "intr-mesh-path-transfer",
+    "repository": "master-records/.github",
+    "transfer_commit": "567e917ebabeaa3ecb896d8d93949b94b9b0d880"
+  },
+  "canonical_state_transition_receipt_sha256": null,
+  "hb_reference": {
+    "authority_effect": "NONE",
+    "derived_from_clock": false,
+    "epoch": 469411750,
+    "frequency_hz": 100,
+    "generation": 469411750,
+    "heartbeat_id": "HB:469411750",
+    "phase_offset_ns": 0,
+    "progression_dependency": "OSCILLATOR_ONLY"
+  },
+  "org_transition_class": "REPO_STATE_PROPAGATION",
+  "organization": "master-records",
+  "predecessor_org_state_sha256": "sha256:46fdc10531c16d18f6e116fe1fdaab9fd7570c66b6ecb07482eac8a777a786ec",
+  "previous_receipt_sha256": "sha256:0e2bc0f83ee5a8ff7da43955d96d3e814cc542b9be3c3ec2ff06a1b11490796f",
+  "receipt_sha256": "sha256:573e86d765305b48ec9dcfd878e1c2510fa6f2c05e8999e8737d676d8918dce8",
+  "repo_receipt_sha256": "sha256:6a78e878fe7a06bfc075be79fc360f0c52267b789f80cf7bdedaa3d41073bc45",
+  "repo_transition_id": "INTR_MESH_PATH_TRANSFER:master-records->AdmittedCode:intr-destination@intr-path-v1:master-records->AdmittedCode",
+  "schema": "stegverse.organization-transition-receipt/v1",
+  "source_receipt_schema": "stegverse.repo-transition-receipt/v1",
+  "source_repository": "master-records/.github",
+  "source_transition_id": "INTR_MESH_PATH_TRANSFER:master-records->AdmittedCode:intr-destination@intr-path-v1:master-records->AdmittedCode",
+  "source_transition_sha256": "sha256:6a78e878fe7a06bfc075be79fc360f0c52267b789f80cf7bdedaa3d41073bc45",
+  "subject_or_correlation_id": null,
+  "successor_org_state_sha256": "sha256:2d0031d5c37cecb3c1da07b86ae0033de9ec01bbee2f6b378aa2010f94ab5860"
+}
