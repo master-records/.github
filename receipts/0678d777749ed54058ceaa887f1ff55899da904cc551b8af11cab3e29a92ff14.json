@@ -1,0 +1,38 @@
+{
+  "authority_effect": "NONE",
+  "boundary_evidence": {
+    "communication_id": "intr-path-v1:Infrastructure-Continuity-Ventures->master-records",
+    "disposition": "ALLOW",
+    "operation": "ORGANIZATION_INTR_DESTINATION_INGRESS",
+    "path_id": "Infrastructure-Continuity-Ventures->master-records:intr-destination",
+    "profile_id": "intr-destination",
+    "source_organization_receipt_sha256": "sha256:efff1f16982726acdd014d6bd053bb535b390d098f759e03597ae6dbfda95122",
+    "source_repository": "Infrastructure-Continuity-Ventures/.github",
+    "source_repository_receipt_sha256": "sha256:183feae6f3ffebab38ee680937a5ddb30aa1336539dea85dc38ae08a324ec1cb"
+  },
+  "canonical_state_transition_receipt_sha256": null,
+  "hb_reference": {
+    "authority_effect": "NONE",
+    "derived_from_clock": false,
+    "epoch": 469411750,
+    "frequency_hz": 100,
+    "generation": 469411750,
+    "heartbeat_id": "HB:469411750",
+    "phase_offset_ns": 0,
+    "progression_dependency": "OSCILLATOR_ONLY"
+  },
+  "org_transition_class": "REPO_STATE_PROPAGATION",
+  "organization": "master-records",
+  "predecessor_org_state_sha256": "sha256:632976a2b6959ce3209af449e8588a4a56a4eb0b36dbbde6320e8a3c3d460dc0",
+  "previous_receipt_sha256": "sha256:89a19cb89009659edf2d0934bd331571b331457f9fb5fbaec31300aa53653896",
+  "receipt_sha256": "sha256:0678d777749ed54058ceaa887f1ff55899da904cc551b8af11cab3e29a92ff14",
+  "repo_receipt_sha256": "sha256:791c5c081563e4ae496e857ae194e4fee7b08172ce47779b891b68ea1c10b2a0",
+  "repo_transition_id": "INTR_MESH_PATH_INGRESS:Infrastructure-Continuity-Ventures->master-records:intr-destination@intr-path-v1:Infrastructure-Continuity-Ventures->master-records",
+  "schema": "stegverse.organization-transition-receipt/v1",
+  "source_receipt_schema": "stegverse.repo-transition-receipt/v1",
+  "source_repository": "master-records/.github",
+  "source_transition_id": "INTR_MESH_PATH_INGRESS:Infrastructure-Continuity-Ventures->master-records:intr-destination@intr-path-v1:Infrastructure-Continuity-Ventures->master-records",
+  "source_transition_sha256": "sha256:791c5c081563e4ae496e857ae194e4fee7b08172ce47779b891b68ea1c10b2a0",
+  "subject_or_correlation_id": null,
+  "successor_org_state_sha256": "sha256:5ec01d41d498f67492c9f5f940b0c050939cabd46602ca0635ff6f82a017e7ac"
+}
