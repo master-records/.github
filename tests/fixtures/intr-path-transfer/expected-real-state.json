@@ -1,0 +1,2901 @@
+{
+  "schema": "stegverse.intr-path-transfer-expected-real-state/v1",
+  "rule": "real state of every declared path, computed by resident-runtime/intr_path_transfer.py verify over the organization ledger at ledger_tip; no path receipt exists yet, so every path is FAIL_CLOSED. Path receipts appear only once the transfer declaration lands on main and .github/workflows/organization-ledger-writer.yml appends them; the destination half stays FAIL_CLOSED until the destination's ledger records the path ingress.",
+  "ledger_ref": "refs/stegverse/organization-ledger",
+  "ledger_tip": "35b3edf72c908879ee8a0974e49131e523b4ed63",
+  "verified_transfer_commit": "e2db4e0d67188ae89201d27b1407da9aee043f11",
+  "verified_transfer_note": "a main merge whose main-merge transfer receipt is on the ledger at ledger_tip",
+  "later_verified_transfer_commit": "e2db4e0d67188ae89201d27b1407da9aee043f11",
+  "unledgered_commit": "c5f40137c29320aad51f4f15defe1f9ca0e3b9ae",
+  "unledgered_note": "a main merge with no main-merge transfer receipt at ledger_tip",
+  "temp_merge_transfers": [],
+  "temp_merge_transfers_note": "main merges whose main-merge transfer receipts the tests and the PR dry-run append to their temporary ledger copies first (for an organization whose ledger has no main-merge transfer receipt yet); those receipts are NOT LEDGERED and NOT AUTHENTIC",
+  "authentic_receipt": false,
+  "counts": {
+    "ALLOW": 0,
+    "DENY": 0,
+    "FAIL_CLOSED": 240
+  },
+  "paths": [
+    {
+      "path_id": "AaCT-E->Admissible-Existence:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AaCT-E->AdmittedCode:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AaCT-E->Data-Continuation:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AaCT-E->ECAT-ICAT-Formal:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AaCT-E->GCAT-BCAT-Engine:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AaCT-E->Infrastructure-Continuity-Ventures:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AaCT-E->SV-011:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AaCT-E->SV-LLM:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AaCT-E->StegGhost:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AaCT-E->StegVerse-002:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AaCT-E->StegVerse-Labs:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AaCT-E->StegVerse-org:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AaCT-E->Triad-Test:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AaCT-E->formalism-tests:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AaCT-E->master-records:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Admissible-Existence->AaCT-E:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Admissible-Existence->AdmittedCode:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Admissible-Existence->Data-Continuation:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Admissible-Existence->ECAT-ICAT-Formal:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Admissible-Existence->GCAT-BCAT-Engine:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Admissible-Existence->Infrastructure-Continuity-Ventures:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Admissible-Existence->SV-011:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Admissible-Existence->SV-LLM:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Admissible-Existence->StegGhost:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Admissible-Existence->StegVerse-002:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Admissible-Existence->StegVerse-Labs:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Admissible-Existence->StegVerse-org:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Admissible-Existence->Triad-Test:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Admissible-Existence->formalism-tests:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Admissible-Existence->master-records:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AdmittedCode->AaCT-E:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AdmittedCode->Admissible-Existence:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AdmittedCode->Data-Continuation:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AdmittedCode->ECAT-ICAT-Formal:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AdmittedCode->GCAT-BCAT-Engine:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AdmittedCode->Infrastructure-Continuity-Ventures:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AdmittedCode->SV-011:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AdmittedCode->SV-LLM:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AdmittedCode->StegGhost:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AdmittedCode->StegVerse-002:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AdmittedCode->StegVerse-Labs:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AdmittedCode->StegVerse-org:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AdmittedCode->Triad-Test:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AdmittedCode->formalism-tests:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "AdmittedCode->master-records:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Data-Continuation->AaCT-E:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Data-Continuation->Admissible-Existence:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Data-Continuation->AdmittedCode:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Data-Continuation->ECAT-ICAT-Formal:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Data-Continuation->GCAT-BCAT-Engine:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Data-Continuation->Infrastructure-Continuity-Ventures:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Data-Continuation->SV-011:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Data-Continuation->SV-LLM:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Data-Continuation->StegGhost:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Data-Continuation->StegVerse-002:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Data-Continuation->StegVerse-Labs:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Data-Continuation->StegVerse-org:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Data-Continuation->Triad-Test:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Data-Continuation->formalism-tests:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Data-Continuation->master-records:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "ECAT-ICAT-Formal->AaCT-E:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "ECAT-ICAT-Formal->Admissible-Existence:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "ECAT-ICAT-Formal->AdmittedCode:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "ECAT-ICAT-Formal->Data-Continuation:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "ECAT-ICAT-Formal->GCAT-BCAT-Engine:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "ECAT-ICAT-Formal->Infrastructure-Continuity-Ventures:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "ECAT-ICAT-Formal->SV-011:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "ECAT-ICAT-Formal->SV-LLM:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "ECAT-ICAT-Formal->StegGhost:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "ECAT-ICAT-Formal->StegVerse-002:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "ECAT-ICAT-Formal->StegVerse-Labs:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "ECAT-ICAT-Formal->StegVerse-org:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "ECAT-ICAT-Formal->Triad-Test:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "ECAT-ICAT-Formal->formalism-tests:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "ECAT-ICAT-Formal->master-records:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "GCAT-BCAT-Engine->AaCT-E:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "GCAT-BCAT-Engine->Admissible-Existence:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "GCAT-BCAT-Engine->AdmittedCode:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "GCAT-BCAT-Engine->Data-Continuation:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "GCAT-BCAT-Engine->ECAT-ICAT-Formal:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "GCAT-BCAT-Engine->Infrastructure-Continuity-Ventures:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "GCAT-BCAT-Engine->SV-011:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "GCAT-BCAT-Engine->SV-LLM:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "GCAT-BCAT-Engine->StegGhost:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "GCAT-BCAT-Engine->StegVerse-002:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "GCAT-BCAT-Engine->StegVerse-Labs:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "GCAT-BCAT-Engine->StegVerse-org:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "GCAT-BCAT-Engine->Triad-Test:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "GCAT-BCAT-Engine->formalism-tests:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "GCAT-BCAT-Engine->master-records:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Infrastructure-Continuity-Ventures->AaCT-E:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Infrastructure-Continuity-Ventures->Admissible-Existence:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Infrastructure-Continuity-Ventures->AdmittedCode:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Infrastructure-Continuity-Ventures->Data-Continuation:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Infrastructure-Continuity-Ventures->ECAT-ICAT-Formal:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Infrastructure-Continuity-Ventures->GCAT-BCAT-Engine:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Infrastructure-Continuity-Ventures->SV-011:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Infrastructure-Continuity-Ventures->SV-LLM:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Infrastructure-Continuity-Ventures->StegGhost:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Infrastructure-Continuity-Ventures->StegVerse-002:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Infrastructure-Continuity-Ventures->StegVerse-Labs:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Infrastructure-Continuity-Ventures->StegVerse-org:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Infrastructure-Continuity-Ventures->Triad-Test:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Infrastructure-Continuity-Ventures->formalism-tests:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Infrastructure-Continuity-Ventures->master-records:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-011->AaCT-E:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-011->Admissible-Existence:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-011->AdmittedCode:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-011->Data-Continuation:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-011->ECAT-ICAT-Formal:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-011->GCAT-BCAT-Engine:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-011->Infrastructure-Continuity-Ventures:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-011->SV-LLM:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-011->StegGhost:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-011->StegVerse-002:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-011->StegVerse-Labs:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-011->StegVerse-org:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-011->Triad-Test:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-011->formalism-tests:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-011->master-records:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-LLM->AaCT-E:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-LLM->Admissible-Existence:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-LLM->AdmittedCode:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-LLM->Data-Continuation:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-LLM->ECAT-ICAT-Formal:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-LLM->GCAT-BCAT-Engine:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-LLM->Infrastructure-Continuity-Ventures:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-LLM->SV-011:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-LLM->StegGhost:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-LLM->StegVerse-002:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-LLM->StegVerse-Labs:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-LLM->StegVerse-org:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-LLM->Triad-Test:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-LLM->formalism-tests:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "SV-LLM->master-records:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegGhost->AaCT-E:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegGhost->Admissible-Existence:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegGhost->AdmittedCode:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegGhost->Data-Continuation:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegGhost->ECAT-ICAT-Formal:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegGhost->GCAT-BCAT-Engine:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegGhost->Infrastructure-Continuity-Ventures:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegGhost->SV-011:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegGhost->SV-LLM:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegGhost->StegVerse-002:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegGhost->StegVerse-Labs:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegGhost->StegVerse-org:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegGhost->Triad-Test:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegGhost->formalism-tests:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegGhost->master-records:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-002->AaCT-E:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-002->Admissible-Existence:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-002->AdmittedCode:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-002->Data-Continuation:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-002->ECAT-ICAT-Formal:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-002->GCAT-BCAT-Engine:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-002->Infrastructure-Continuity-Ventures:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-002->SV-011:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-002->SV-LLM:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-002->StegGhost:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-002->StegVerse-Labs:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-002->StegVerse-org:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-002->Triad-Test:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-002->formalism-tests:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-002->master-records:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-Labs->AaCT-E:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-Labs->Admissible-Existence:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-Labs->AdmittedCode:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-Labs->Data-Continuation:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-Labs->ECAT-ICAT-Formal:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-Labs->GCAT-BCAT-Engine:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-Labs->Infrastructure-Continuity-Ventures:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-Labs->SV-011:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-Labs->SV-LLM:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-Labs->StegGhost:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-Labs->StegVerse-002:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-Labs->StegVerse-org:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-Labs->Triad-Test:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-Labs->formalism-tests:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-Labs->master-records:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-org->AaCT-E:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-org->Admissible-Existence:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-org->AdmittedCode:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-org->Data-Continuation:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-org->ECAT-ICAT-Formal:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-org->GCAT-BCAT-Engine:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-org->Infrastructure-Continuity-Ventures:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-org->SV-011:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-org->SV-LLM:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-org->StegGhost:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-org->StegVerse-002:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-org->StegVerse-Labs:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-org->Triad-Test:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-org->formalism-tests:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "StegVerse-org->master-records:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Triad-Test->AaCT-E:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Triad-Test->Admissible-Existence:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Triad-Test->AdmittedCode:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Triad-Test->Data-Continuation:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Triad-Test->ECAT-ICAT-Formal:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Triad-Test->GCAT-BCAT-Engine:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Triad-Test->Infrastructure-Continuity-Ventures:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Triad-Test->SV-011:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Triad-Test->SV-LLM:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Triad-Test->StegGhost:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Triad-Test->StegVerse-002:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Triad-Test->StegVerse-Labs:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Triad-Test->StegVerse-org:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Triad-Test->formalism-tests:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "Triad-Test->master-records:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "formalism-tests->AaCT-E:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "formalism-tests->Admissible-Existence:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "formalism-tests->AdmittedCode:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "formalism-tests->Data-Continuation:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "formalism-tests->ECAT-ICAT-Formal:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "formalism-tests->GCAT-BCAT-Engine:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "formalism-tests->Infrastructure-Continuity-Ventures:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "formalism-tests->SV-011:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "formalism-tests->SV-LLM:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "formalism-tests->StegGhost:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "formalism-tests->StegVerse-002:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "formalism-tests->StegVerse-Labs:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "formalism-tests->StegVerse-org:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "formalism-tests->Triad-Test:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "formalism-tests->master-records:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": "B"
+    },
+    {
+      "path_id": "master-records->AaCT-E:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": null
+    },
+    {
+      "path_id": "master-records->Admissible-Existence:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": null
+    },
+    {
+      "path_id": "master-records->AdmittedCode:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": null
+    },
+    {
+      "path_id": "master-records->Data-Continuation:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": null
+    },
+    {
+      "path_id": "master-records->ECAT-ICAT-Formal:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": null
+    },
+    {
+      "path_id": "master-records->GCAT-BCAT-Engine:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": null
+    },
+    {
+      "path_id": "master-records->Infrastructure-Continuity-Ventures:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": null
+    },
+    {
+      "path_id": "master-records->SV-011:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": null
+    },
+    {
+      "path_id": "master-records->SV-LLM:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": null
+    },
+    {
+      "path_id": "master-records->StegGhost:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": null
+    },
+    {
+      "path_id": "master-records->StegVerse-002:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": null
+    },
+    {
+      "path_id": "master-records->StegVerse-Labs:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": null
+    },
+    {
+      "path_id": "master-records->StegVerse-org:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": null
+    },
+    {
+      "path_id": "master-records->Triad-Test:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": null
+    },
+    {
+      "path_id": "master-records->formalism-tests:intr-destination",
+      "capability": "intr-destination",
+      "disposition": "FAIL_CLOSED",
+      "failure_code": "INTR_PATH_RECEIPT_NOT_LEDGERED",
+      "failed_predicate": "PATH_HAS_A_SOURCE_LEDGER_RECEIPT",
+      "halves": {
+        "source": "FAIL_CLOSED",
+        "destination": "FAIL_CLOSED"
+      },
+      "classification": null
+    }
+  ]
+}

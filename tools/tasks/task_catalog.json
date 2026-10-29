@@ -205,6 +205,112 @@
     "persist_credentials": "false",
     "timeout_minutes": 10
    }
+  },
+  {
+   "id": "intr-path-transfer-validation.unit",
+   "source": {
+    "workflow": ".github/workflows/intr-path-transfer-validation.yml",
+    "workflow_name": "Validate InTr Mesh Path Transfer",
+    "job": "unit",
+    "job_name": null,
+    "commit": "e583bdf",
+    "triggers_before": [
+     "pull_request",
+     "push"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    }
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {
+    "LEDGER_REF": "refs/stegverse/organization-ledger",
+    "DRY_RUN_REF": "refs/dry-run/organization-ledger"
+   },
+   "steps": [
+    {
+     "name": "Fetch the ledger ref read-only (the fixtures pin a commit on it)",
+     "run_file": "tools/tasks/steps/intr-path-transfer-validation.unit/01-fetch-the-ledger-ref-read-only-the-fixtures-pin-a-commit-on-.sh",
+     "run_sha256": "23d3ba4d4667391d4c731e9630fbf7fda623b69e7164369665c88cf283b947cc"
+    },
+    {
+     "name": "Declared paths, append, two-half verify, refusals (temp ledgers from the pinned tip)",
+     "run_file": "tools/tasks/steps/intr-path-transfer-validation.unit/02-declared-paths-append-two-half-verify-refusals-temp-ledgers-.sh",
+     "run_sha256": "0f0b28a1e08f534b19a6e74dffe6dfe6a18fbb2b9261e5f4118802af44b7c952"
+    },
+    {
+     "name": "Destination carrier, ingress append, link and end-to-end checks (synthetic source receipts, temp ledgers)",
+     "run_file": "tools/tasks/steps/intr-path-transfer-validation.unit/03-destination-carrier-ingress-append-link-and-end-to-end-check.sh",
+     "run_sha256": "c4e0e9ab634dfdb4a905a999ff13a486474827dfe7a9b7d994dad0fc53fcef95"
+    },
+    {
+     "name": "Cross-organization pair check through TV/TVC (TVC#528 fixture receipts; no token; real state FAIL_CLOSED at the TVC transition)",
+     "run_file": "tools/tasks/steps/intr-path-transfer-validation.unit/04-cross-organization-pair-check-through-tv-tvc-tvc-528-fixture.sh",
+     "run_sha256": "9045898b4e1481b6d5c6310a5451687a4a262bb5fdc1991547ee70c71ed7c6c4"
+    },
+    {
+     "name": "Public-ledger route of the cross-org read (E0, no credential); inbound rows dry-run end to end on a scratch ref",
+     "run_file": "tools/tasks/steps/intr-path-transfer-validation.unit/05-public-ledger-route-of-the-cross-org-read-e0-no-credential-i.sh",
+     "run_sha256": "15779fc4996462d5255ec566c7abbde2d2e838f745ba0bd039de83f25bc00108"
+    }
+   ],
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "0",
+    "persist_credentials": "true",
+    "timeout_minutes": 30
+   }
+  },
+  {
+   "id": "intr-path-transfer-validation.dry-run",
+   "source": {
+    "workflow": ".github/workflows/intr-path-transfer-validation.yml",
+    "workflow_name": "Validate InTr Mesh Path Transfer",
+    "job": "dry-run",
+    "job_name": null,
+    "commit": "e583bdf",
+    "triggers_before": [
+     "pull_request",
+     "push"
+    ],
+    "permissions_before": {
+     "contents": "read"
+    }
+   },
+   "events": [
+    "pull_request",
+    "push"
+   ],
+   "env": {
+    "LEDGER_REF": "refs/stegverse/organization-ledger",
+    "DRY_RUN_REF": "refs/dry-run/organization-ledger"
+   },
+   "steps": [
+    {
+     "name": "Copy the published ledger to a scratch ref",
+     "run_file": "tools/tasks/steps/intr-path-transfer-validation.dry-run/01-copy-the-published-ledger-to-a-scratch-ref.sh",
+     "run_sha256": "3127ce8dcd732fe6e0a4e52018ab4e8fd862af9b57113ce7357fb6c95d982233"
+    },
+    {
+     "name": "Real state, read-only: inspect actual source halves without assuming absent receipts",
+     "run_file": "tools/tasks/steps/intr-path-transfer-validation.dry-run/02-real-state-read-only-inspect-actual-source-halves-without-as.sh",
+     "run_sha256": "556876a10b61f7f39436220043b6c6370f86ebc440bb2fbe4376b1a4531f4548"
+    },
+    {
+     "name": "The writer's append on the scratch ref, linked to the last ledgered main merge",
+     "run_file": "tools/tasks/steps/intr-path-transfer-validation.dry-run/03-the-writer-s-append-on-the-scratch-ref-linked-to-the-last-le.sh",
+     "run_sha256": "9f263a51f49913c78ca27911c2047eb94f536a7c6bac1cb0b040d1d54bed7192"
+    }
+   ],
+   "artifacts": [],
+   "runner": {
+    "fetch_depth": "0",
+    "persist_credentials": "true",
+    "timeout_minutes": 30
+   }
   }
  ]
 }
