@@ -1,0 +1,38 @@
+{
+  "authority_effect": "NONE",
+  "boundary_evidence": {
+    "communication_id": "intr-path-v1:AaCT-E->master-records",
+    "disposition": "ALLOW",
+    "operation": "ORGANIZATION_INTR_DESTINATION_INGRESS",
+    "path_id": "AaCT-E->master-records:intr-destination",
+    "profile_id": "intr-destination",
+    "source_organization_receipt_sha256": "sha256:4686efeb9b0dfb41b11400d50988a7f13c3b1d6f0259a9112cfb175b94a9ee1b",
+    "source_repository": "AaCT-E/.github",
+    "source_repository_receipt_sha256": "sha256:3d866279b49b76257412f456f50c6de31500c317bcc54b4a9fd9ab5adaee4d8a"
+  },
+  "canonical_state_transition_receipt_sha256": null,
+  "hb_reference": {
+    "authority_effect": "NONE",
+    "derived_from_clock": false,
+    "epoch": 469411750,
+    "frequency_hz": 100,
+    "generation": 469411750,
+    "heartbeat_id": "HB:469411750",
+    "phase_offset_ns": 0,
+    "progression_dependency": "OSCILLATOR_ONLY"
+  },
+  "org_transition_class": "REPO_STATE_PROPAGATION",
+  "organization": "master-records",
+  "predecessor_org_state_sha256": "sha256:cdc2271945306b88e8d4308c5ae13571b975506d28b82db3123dac4abfe656a1",
+  "previous_receipt_sha256": "sha256:0ee36de03b24c099213e68a3fea86aa0dc92355f3d13b55eb846df696c040d60",
+  "receipt_sha256": "sha256:7793a2aa5def6c669c10aea8ae27596e7f2378d2f51b38defc866f1171f63b5e",
+  "repo_receipt_sha256": "sha256:cc164dbbf564bee119fb50c31db8cf7ddd2a338bb0f9cc11e378bb33bf389697",
+  "repo_transition_id": "INTR_MESH_PATH_INGRESS:AaCT-E->master-records:intr-destination@intr-path-v1:AaCT-E->master-records",
+  "schema": "stegverse.organization-transition-receipt/v1",
+  "source_receipt_schema": "stegverse.repo-transition-receipt/v1",
+  "source_repository": "master-records/.github",
+  "source_transition_id": "INTR_MESH_PATH_INGRESS:AaCT-E->master-records:intr-destination@intr-path-v1:AaCT-E->master-records",
+  "source_transition_sha256": "sha256:cc164dbbf564bee119fb50c31db8cf7ddd2a338bb0f9cc11e378bb33bf389697",
+  "subject_or_correlation_id": null,
+  "successor_org_state_sha256": "sha256:191a01c4df8de02fc7e9ee2579a30c78c309a9463dcaca15b54b0c24b50a445a"
+}
