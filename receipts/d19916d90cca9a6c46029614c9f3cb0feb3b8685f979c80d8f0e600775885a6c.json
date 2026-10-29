@@ -1,0 +1,38 @@
+{
+  "authority_effect": "NONE",
+  "boundary_evidence": {
+    "communication_id": "intr-path-v1:master-records->StegVerse-org",
+    "destination_organization": "StegVerse-org",
+    "disposition": "ALLOW",
+    "operation": "INTR_MESH_PATH_TRANSFER",
+    "path_id": "master-records->StegVerse-org:intr-destination",
+    "profile_id": "intr-mesh-path-transfer",
+    "repository": "master-records/.github",
+    "transfer_commit": "567e917ebabeaa3ecb896d8d93949b94b9b0d880"
+  },
+  "canonical_state_transition_receipt_sha256": null,
+  "hb_reference": {
+    "authority_effect": "NONE",
+    "derived_from_clock": false,
+    "epoch": 469411750,
+    "frequency_hz": 100,
+    "generation": 469411750,
+    "heartbeat_id": "HB:469411750",
+    "phase_offset_ns": 0,
+    "progression_dependency": "OSCILLATOR_ONLY"
+  },
+  "org_transition_class": "REPO_STATE_PROPAGATION",
+  "organization": "master-records",
+  "predecessor_org_state_sha256": "sha256:c5733cb70c6f97544f23b5628f4ea73e5122fb7f9726626d9a3f84de18faf8b0",
+  "previous_receipt_sha256": "sha256:822fdadababcb91a10d0223789e160d8862805ca14147090fd7db4c735a11482",
+  "receipt_sha256": "sha256:d19916d90cca9a6c46029614c9f3cb0feb3b8685f979c80d8f0e600775885a6c",
+  "repo_receipt_sha256": "sha256:f1c20fe17cf8346afd096c36e269db6a35fa62e11b6906daee6ad35ec29a7a6e",
+  "repo_transition_id": "INTR_MESH_PATH_TRANSFER:master-records->StegVerse-org:intr-destination@intr-path-v1:master-records->StegVerse-org",
+  "schema": "stegverse.organization-transition-receipt/v1",
+  "source_receipt_schema": "stegverse.repo-transition-receipt/v1",
+  "source_repository": "master-records/.github",
+  "source_transition_id": "INTR_MESH_PATH_TRANSFER:master-records->StegVerse-org:intr-destination@intr-path-v1:master-records->StegVerse-org",
+  "source_transition_sha256": "sha256:f1c20fe17cf8346afd096c36e269db6a35fa62e11b6906daee6ad35ec29a7a6e",
+  "subject_or_correlation_id": null,
+  "successor_org_state_sha256": "sha256:95fa2bc94d23d80eaa7cd576fc066eaf2ebd071f25935b5aeb32b4326378bb3f"
+}
